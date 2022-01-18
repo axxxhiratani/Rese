@@ -1,0 +1,51 @@
+h1{
+    color: blueviolet;
+}
+.container--register{
+    width: 50%;
+    height: auto;
+    border: solid 2px #000;
+    border-radius: 10px;
+    margin: 100px auto;
+}
+.container--register__title{
+    background: #0000ff;
+    width: 100%;
+    border-top-left-radius: 10px;
+    border-top-right-radius: 10px;
+    border: #0000ff 1px solid;
+    padding: 10px 0px;
+    color: #fff;
+}
+.container--register__form{
+    text-align: center;
+    margin: 10px auto;
+    padding: 5px 20px;
+}
+.container--register__form__input {
+    width: 100%;
+    margin: 10px 0;
+}
+.container--register__form__input--text{
+    border-bottom:1px solid #cccccc;
+    border-right:none;
+    border-left:none;
+    border-top:none;
+}
+.icon--user{
+
+}
+.icon--email{
+
+}
+.icon--password{
+
+}
+.container--register__form--button{
+    background: #0000ff;
+    border-radius: 5px;
+    padding: 3px 10px;
+    color: #fff;
+    cursor: pointer;
+    float: right;
+}

@@ -16,7 +16,7 @@ class CreateShopsTable extends Migration
         Schema::create('shops', function (Blueprint $table) {
             $table->id();
             $table->unsignedBigInteger("owner_id");
-            $table->unsignedBigInteger("genere_id");
+            $table->unsignedBigInteger("genre_id");
             $table->string("name",255);
             $table->string("area",255);
             $table->string("overview",255);
@@ -25,7 +25,7 @@ class CreateShopsTable extends Migration
             $table->timestamp("updated_at")->useCurrent()->nullable();
 
             $table->foreign("owner_id")->references("id")->on("owners")->onDelete("cascade");
-            $table->foreign("genere_id")->references("id")->on("generes")->onDelete("cascade");
+            $table->foreign("genre_id")->references("id")->on("genres")->onDelete("cascade");
         });
     }
 

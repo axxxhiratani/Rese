@@ -3,9 +3,9 @@
 namespace Database\Seeders;
 
 use Illuminate\Database\Seeder;
-use App\Models\Genere;
+use App\Models\Genre;
 
-class GeneresTableSeeder extends Seeder
+class GenresTableSeeder extends Seeder
 {
     /**
      * Run the database seeds.
@@ -15,19 +15,19 @@ class GeneresTableSeeder extends Seeder
     public function run()
     {
         //
-        Genere::create([
+        Genre::create([
             "name" => "寿司"
         ]);
-        Genere::create([
+        Genre::create([
             "name" => "焼肉"
         ]);
-        Genere::create([
+        Genre::create([
             "name" => "居酒屋"
         ]);
-        Genere::create([
+        Genre::create([
             "name" => "イタリアン"
         ]);
-        Genere::create([
+        Genre::create([
             "name" => "ラーメン"
         ]);
     }

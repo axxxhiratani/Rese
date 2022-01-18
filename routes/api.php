@@ -2,7 +2,7 @@
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
-use App\Http\Controllers\ShopAPIController;
+use App\Http\Controllers\ShopController;
 /*
 |--------------------------------------------------------------------------
 | API Routes
@@ -18,4 +18,7 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
     return $request->user();
 });
 
-Route::apiResource("/v1/shop",ShopAPIController::class);
+Route::prefix("v1/shop")->group(function(){
+    Route::get("/",[ShopController::class,"showAll"]);
+    Route::get("/search",[ShopController::class,"search"]);
+});

@@ -11,25 +11,23 @@
             <input type="text" name="" id="" class="container__search--input--name">
         </div>
         <div class="container__list">
-        @foreach ($shops as $shop)
-            <div class="container__list__shop">
-                <img class="container__list__shop--img" src="{{$shop->image}}" alt="">
-                <p class="container__list__shop--name">{{$shop->name}}</p>
+            <div class="container__list__shop" v-for="shop in shops">
+                <img class="container__list__shop--img" v-bind:src="shop.image" alt="">
+                <p class="container__list__shop--name">@{{shop.name}}</p>
 
                 <p class="container__list__shop--info">
                     <span>
-                        #{{$shop->area}}
+                        #@{{shop.area}}
                     </span>
                     <span>
-                        #{{$shop->genere->name}}
+                        #@{{shop.area}}
                     </span>
                 </p>
                 <div class="container__list__shop--buttom">
-                    <a href="/detail/{{$shop->id}}" class="container__list__shop--buttom--detail">詳しくみる</a>
+                    <a @click="detail(shop.id)" class="container__list__shop--buttom--detail">詳しくみる</a>
                     <a href="" class="container__list__shop--buttom--favorite">♡</a>
                 </div>
             </div>
-        @endforeach
         </div>
     </div>
 </x-layout>
@@ -46,13 +44,13 @@
                 shops:[],
             },
             methods:{
-                getShopAll:function(){
+                getShopAll:async function(){
                     let url = "api/v1/shop";
-                    axios.get(url)
+                    await axios.get(url)
                     .then(function (response) {
                     // handle success(axiosの処理が成功した場合に処理させたいことを記述)
                         console.log(response.data.shops);
-                        this.shops = response.data.shops;
+                        vm.shops = response.data.shops;
                     })
                     .catch(function (error) {
                     // handle error(axiosの処理にエラーが発生した場合に処理させたいことを記述)
@@ -61,6 +59,9 @@
                     .finally(function () {
                     // always executed(axiosの処理結果によらずいつも実行させたい処理を記述)
                     });
+                },
+                detail:function(id){
+                    window.location.href = `/detail/${id}`;
                 }
             },
             created:function(){

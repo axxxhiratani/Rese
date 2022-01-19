@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Shop;
+use App\Models\Genre;
 
 class ShopController extends Controller
 {
@@ -17,6 +18,16 @@ class ShopController extends Controller
     public function showAll()
     {
         $shops = Shop::all();
+        $genres = Genre::all();
+        for($i = 0; $i < count($shops); $i++){
+            $genre_id = $shops[$i]["genre_id"];
+            for($j = 0; $j < count($genres); $j++){
+                if($genres[$j]["id"] === $genre_id){
+                    $genre = $genres[$j];
+                }
+                $shops[$i]["genre_id"] = $genre;
+            }
+        }
         return response()->json([
             "shops" => $shops
         ]);
@@ -40,9 +51,9 @@ class ShopController extends Controller
             ];
             array_push($sql,$data);
         }
-        if($request->genere_id){
+        if($request->genre_id){
             $data = [
-                "genere_id",$request->genere_id
+                "genre_id",$request->genre_id
             ];
             array_push($sql,$data);
         }
@@ -54,7 +65,16 @@ class ShopController extends Controller
         }
 
         $shops = Shop::where($sql)->get();
-
+        $genres = Genre::all();
+        for($i = 0; $i < count($shops); $i++){
+            $genre_id = $shops[$i]["genre_id"];
+            for($j = 0; $j < count($genres); $j++){
+                if($genres[$j]["id"] === $genre_id){
+                    $genre = $genres[$j];
+                }
+                $shops[$i]["genre_id"] = $genre;
+            }
+        }
         return response()->json([
             "shops" => $shops
         ]);

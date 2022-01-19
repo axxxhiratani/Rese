@@ -3,6 +3,7 @@
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\ShopController;
+use App\Http\Controllers\GenreController;
 /*
 |--------------------------------------------------------------------------
 | API Routes
@@ -21,4 +22,8 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
 Route::prefix("v1/shop")->group(function(){
     Route::get("/",[ShopController::class,"showAll"]);
     Route::get("/search",[ShopController::class,"search"]);
+});
+
+Route::prefix("v1/genre")->group(function(){
+    Route::get("/",[GenreController::class,"showAll"]);
 });

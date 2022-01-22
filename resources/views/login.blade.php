@@ -1,19 +1,30 @@
 <head>
-    <link rel="stylesheet" href="{{asset('/css/register.css')}}">
+    <link rel="stylesheet" href="{{asset('/css/login.css')}}">
+    <link rel="stylesheet" href="{{asset('/fontawesome-free-5.15.4-web/css/all.css')}}">
 </head>
 
+
 <x-layout>
-<div class="container--register">
-    <div class="container--register__title">
-        <p>Regitration</p>
+<div class="container--login">
+    <div class="container--login__title">
+        <p>Login</p>
     </div>
-    <div>
+    <div class="container--login__form">
         <form action="/login" method="post">
             @csrf
-            <input type="email" name="email">
-            <input type="password" name="password">
-            <button type="submit">ログイン</button>
-             
+
+            <div class="container--login__form__input">
+                <label for=""><i class="fas fa-envelope"></i></label>
+                <input type="email" name="email" class="container--login__form__input--text" placeholder="Email">
+            </div>
+
+            <div class="container--login__form__input">
+                <label for=""><i class="fas fa-lock"></i></label>
+                <input type="password" name="password" class="container--login__form__input--text" placeholder="Password">
+            </div>
+
+            <button type="submit" class="container--login__form--button">ログイン</button>
+
         </form>
     </div>
 </div>

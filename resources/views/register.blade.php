@@ -28,6 +28,7 @@
             </div>
 
             <button type="submit" class="container--register__form--button">登録</button>
+
         </form>
     </div>
 </div>

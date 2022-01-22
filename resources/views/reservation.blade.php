@@ -57,8 +57,6 @@
                         <p class="container__form__info__tr--td">@{{number}}人</p>
                     </div>
                 </div>
-
-
                 <button type="submit" class="container__form--button">予約する</button>
             </form>
         </div>

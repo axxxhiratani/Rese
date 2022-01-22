@@ -14,9 +14,15 @@
 
         <nav class="nav" id="nav">
             <ul>
-                <li><a href="#">リンク1</a></li>
-                <li><a href="#">リンク2</a></li>
-                <li><a href="#">リンク3</a></li>
+                @if (Auth::id())
+                    <li><a href="/">Home</a></li>
+                    <li><a href="/logout">Logout</a></li>
+                    <li><a href="#">Mypage</a></li>
+                @else
+                    <li><a href="/">Home</a></li>
+                    <li><a href="/register">Registration</a></li>
+                    <li><a href="/login">Login</a></li>
+                @endif
             </ul>
         </nav>
         <div class="menu--container">

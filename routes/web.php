@@ -15,9 +15,9 @@ use App\Http\Controllers\ReservationController;
 |
 */
 
-Route::get('/',[ShopController::class,"index"]);
-Route::get('/detail/{id?}',[ShopController::class,"show"]);
-Route::post('/done',[ReservationController::class,"store"]);
+Route::get('/',[ShopController::class,"index"])->middleware(['auth']);
+Route::get('/detail/{id?}',[ShopController::class,"show"])->middleware(['auth']);
+Route::post('/done',[ReservationController::class,"store"])->middleware(['auth']);
 
 
 
@@ -28,7 +28,6 @@ Route::get('/dashboard', function () {
 // Route::get("/register");
 // Route::post("/register",[UserController::class,"store"]);
 Route::get("/thanks",[UserController::class,"thanks"]);
-
 Route::get("/login");
 Route::post("/login",[UserController::class,"store"]);
 

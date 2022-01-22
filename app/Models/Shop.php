@@ -4,7 +4,8 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
-use App\Models\Genere;
+use App\Models\Genre;
+use App\Models\Area;
 
 class Shop extends Model
 {
@@ -19,8 +20,13 @@ class Shop extends Model
         "image"
     ];
 
-    public function genere()
+    public function genre()
     {
-        return $this->belongsTo(Genere::class);
+        return $this->belongsTo(Genre::class);
+    }
+
+    public function area()
+    {
+        return $this->belongsTo(Area::class);
     }
 }

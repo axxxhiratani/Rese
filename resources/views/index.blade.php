@@ -1,23 +1,15 @@
 <head>
     <link rel="stylesheet" href="{{asset('/css/index.css')}}">
+    <link rel="stylesheet" href="{{asset('/fontawesome-free-5.15.4-web/css/all.css')}}">
 </head>
 
 
 <x-layout>
     <div class="container" id="app">
         <div class="container__search">
-            <select v-model="area" class="container__search--input--area">
-                <option value="">
-                    All area
-                </option>
-                <option value="東京都">
-                    東京都
-                </option>
-                <option value="大阪府">
-                    大阪府
-                </option>
-                <option value="福岡県">
-                    福岡県
+            <select v-model="area_id" class="container__search--input--genre">
+                <option v-bind:value="area.id" v-for="area in areas">
+                    @{{area.name}}
                 </option>
             </select>
             <select v-model="genre_id" class="container__search--input--genre">
@@ -25,16 +17,18 @@
                     @{{genre.name}}
                 </option>
             </select>
+            <i class="fas fa-search">
+            </i>
             <input type="text" v-model="name" class="container__search--input--name">
         </div>
         <div class="container__list">
-            <div class="container__list__shop" v-for="shop in shops">
+            <div class="container__list__shop" v-for="(shop,index) in shops">
                 <img class="container__list__shop--img" v-bind:src="shop.image" alt="">
                 <p class="container__list__shop--name">@{{shop.name}}</p>
 
                 <p class="container__list__shop--info">
                     <span>
-                        #@{{shop.area}}
+                        #@{{shop.area_id.name}}
                     </span>
                     <span>
                         #@{{shop.genre_id.name}}
@@ -42,13 +36,22 @@
                 </p>
                 <div class="container__list__shop--buttom">
                     <a @click="detail(shop.id)" class="container__list__shop--buttom--detail">詳しくみる</a>
-                    <a href="" class="container__list__shop--buttom--favorite">♡</a>
+                    <a @click="clickFavorite(shop.id,user_id,index)" class="container__list__shop--buttom--favorite">
+                        <i v-bind:class="decorationFavorite(shop.id,1,index)">
+                        </i>
+                    </a>
                 </div>
+            </div>
+        </div>
+        <div class="container__page">
+            <div @click="movePage(link.url,index)" v-for="(link,index) in links" class="container__page__link">
+                <a v-if="index == 0"><</a>
+                <a v-else-if="index ==last_page+1">></a>
+                <a v-else>@{{link.label}}</a>
             </div>
         </div>
     </div>
 </x-layout>
-
 
 <script src="https://cdn.jsdelivr.net/npm/vue"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
@@ -60,12 +63,18 @@
             data:{
                 shops:[],
                 genres:[],
-                area:"",
+                areas:[],
+                links:[],
+                favorites:[],
+                user_id:{{Auth::id()}},
+                current_page:"",
+                last_page:"",
+                area_id:"",
                 genre_id:"",
                 name:"",
             },
             watch:{
-                area:function(){
+                area_id:function(){
                     this.getShopSearch();
                 },
                 genre_id:function(){
@@ -81,8 +90,10 @@
                     await axios.get(url)
                     .then(function (response) {
                     // handle success(axiosの処理が成功した場合に処理させたいことを記述)
-                        console.log(response.data.shops);
-                        vm.shops = response.data.shops;
+                        vm.shops = response.data.shops.data;
+                        vm.links = response.data.shops.links;
+                        vm.current_page = response.data.shops.current_page;
+                        vm.last_page = response.data.shops.last_page;
                     })
                     .catch(function (error) {
                     // handle error(axiosの処理にエラーが発生した場合に処理させたいことを記述)
@@ -91,22 +102,29 @@
                     .finally(function () {
                     // always executed(axiosの処理結果によらずいつも実行させたい処理を記述)
                     });
+                    $(".container__page__link").eq(1).addClass("active");
+                    $(".container__page__link").eq(1).find("a").addClass("active");
+
                 },
 
                 getShopSearch:async function(){
                     let url = "api/v1/shop/search";
                     await axios.get(url,{
                         params:{
-                            area:this.area,
+                            area_id:this.area_id,
                             genre_id:this.genre_id,
                             name:this.name
                         }
                     })
                     .then(function (response) {
                     // handle success(axiosの処理が成功した場合に処理させたいことを記述)
-                        console.log("data");
-                        console.log(response.data.shops);
-                        vm.shops = response.data.shops;
+                        vm.shops = response.data.shops.data;
+                        vm.links = response.data.shops.links;
+                        vm.current_page = response.data.shops.current_page;
+                        vm.last_page = response.data.shops.last_page;
+                        $(".container__page__link").removeClass("active");
+                        $(".container__page__link").eq(1).addClass("active");
+                        $(".container__page__link").eq(1).find("a").addClass("active");
                     })
                     .catch(function (error) {
                     // handle error(axiosの処理にエラーが発生した場合に処理させたいことを記述)
@@ -115,16 +133,14 @@
                     .finally(function () {
                     // always executed(axiosの処理結果によらずいつも実行させたい処理を記述)
                     });
+                    this.getFavorite();
                 },
-
-
 
                 getGenreAll:async function(){
                     let url = "api/v1/genre";
                     await axios.get(url)
                     .then(function (response) {
                     // handle success(axiosの処理が成功した場合に処理させたいことを記述)
-                        console.log(response.data.genres);
                         vm.genres = response.data.genres;
                         vm.genres.unshift({
                                     id:"",
@@ -141,13 +157,171 @@
                     // always executed(axiosの処理結果によらずいつも実行させたい処理を記述)
                     });
                 },
+
+                getAreaAll:async function(){
+
+                    let url = "api/v1/area";
+                    await axios.get(url)
+                    .then(function (response) {
+                    // handle success(axiosの処理が成功した場合に処理させたいことを記述)
+                        vm.areas = response.data.areas;
+                        vm.areas.unshift({
+                                    id:"",
+                                    name:"All Genre",
+                                    created_at: "",
+                                    updated_at: ""
+                                });
+                    })
+                    .catch(function (error) {
+                    // handle error(axiosの処理にエラーが発生した場合に処理させたいことを記述)
+                        console.log(error);
+                    })
+                    .finally(function () {
+                    // always executed(axiosの処理結果によらずいつも実行させたい処理を記述)
+                    });
+                },
+
+                getFavorite:async function () {
+                    let url = `api/v1/favorite/${this.user_id}`;
+                    await axios.get(url)
+                    .then(function (response) {
+                    // handle success(axiosの処理が成功した場合に処理させたいことを記述)
+                        vm.favorites = response.data.favorites;
+                        console.log(vm.favorites);
+                    })
+                    .catch(function (error) {
+                    // handle error(axiosの処理にエラーが発生した場合に処理させたいことを記述)
+                        console.log(error);
+                    })
+                    .finally(function () {
+                    // always executed(axiosの処理結果によらずいつも実行させたい処理を記述)
+                    });
+                },
+
+                decorationFavorite:function(shop_id,user_id,index){
+                    let style = "far fa-heart";
+                    if(this.checkFavorite(shop_id,user_id,index)){
+                        style = "fas fa-heart favorited"
+                    }
+                    return style;
+                },
+
+                checkFavorite:function(shop_id,user_id,index){
+                    let flg = false;
+                    this.favorites.forEach(value =>{
+                        if(value.user_id == user_id && value.shop_id == shop_id){
+                            flg = true;
+                        }
+                    });
+                    return flg;
+                },
+
+                clickFavorite:function(shop_id,user_id,index){
+                    console.log(index);
+                    if(!this.checkFavorite(shop_id,user_id,index)){
+                        this.addFavorite(shop_id,user_id,index);
+                    }else{
+                        console.log("delete");
+                        this.deleteFavorite(shop_id,user_id,index);
+                    }
+
+                },
+
+                addFavorite:async function(shop_id,user_id,index){
+                    let url = "api/v1/favorite";
+                    await axios.post(url,{
+                        user_id:user_id,
+                        shop_id:shop_id
+                    })
+                    .then(function (response) {
+                    // handle success(axiosの処理が成功した場合に処理させたいことを記述)
+                    })
+                    .catch(function (error) {
+                    // handle error(axiosの処理にエラーが発生した場合に処理させたいことを記述)
+                        console.log(error);
+                    })
+                    .finally(function () {
+                    // always executed(axiosの処理結果によらずいつも実行させたい処理を記述)
+                    });
+                    this.toggleHert(index);
+                },
+                deleteFavorite:async function(shop_id,user_id,index){
+                    let url = "api/v1/favorite";
+                    await axios.delete(url,{
+                        params:{
+                            user_id:user_id,
+                            shop_id:shop_id
+                        }
+                    })
+                    .then(function (response) {
+                    // handle success(axiosの処理が成功した場合に処理させたいことを記述)
+                    })
+                    .catch(function (error) {
+                    // handle error(axiosの処理にエラーが発生した場合に処理させたいことを記述)
+                        console.log(error);
+                    })
+                    .finally(function () {
+                    // always executed(axiosの処理結果によらずいつも実行させたい処理を記述)
+                    });
+                    this.toggleHert(index);
+                },
+
+                movePage:async function(url,index){
+
+                    if(!url){
+                        return;
+                    }
+                    $(".container__page__link").removeClass("active");
+                    $(".container__page__link").find("a").removeClass("active");
+                    if(index ==0){
+                        $(".container__page__link").eq(this.current_page -1).addClass("active");
+                        $(".container__page__link").eq(this.current_page -1).find("a").addClass("active");
+                    }else if(index == this.last_page + 1){
+                        $(".container__page__link").eq(this.current_page + 1).addClass("active");
+                        $(".container__page__link").eq(this.current_page + 1).find("a").addClass("active");
+                    }else{
+                        $(".container__page__link").eq(index).addClass("active");
+                        $(".container__page__link").eq(index).find("a").addClass("active");
+                    }
+                    await axios.get(url,{
+                        params:{
+                            area_id:this.area_id,
+                            genre_id:this.genre_id,
+                            name:this.name
+                        }
+                    })
+                    .then(function (response) {
+                    // handle success(axiosの処理が成功した場合に処理させたいことを記述)
+                        vm.shops = response.data.shops.data;
+                        vm.links = response.data.shops.links;
+                        vm.current_page = response.data.shops.current_page;
+                        vm.last_page = response.data.shops.last_page;
+                    })
+                    .catch(function (error) {
+                    // handle error(axiosの処理にエラーが発生した場合に処理させたいことを記述)
+                        console.log(error);
+                    })
+                    .finally(function () {
+                    // always executed(axiosの処理結果によらずいつも実行させたい処理を記述)
+                    });
+                    this.getFavorite();
+                },
+
+                toggleHert:function(index){
+                    $(".container__list__shop--buttom--favorite").eq(index).find("i").toggleClass("favorited");
+                    $(".container__list__shop--buttom--favorite").eq(index).find("i").toggleClass("far");
+                    $(".container__list__shop--buttom--favorite").eq(index).find("i").toggleClass("fas");
+                },
+
                 detail:function(id){
                     window.location.href = `/detail/${id}`;
                 }
             },
             created:function(){
                 this.getShopAll();
+                this.getAreaAll();
                 this.getGenreAll();
+                this.getFavorite();
             }
         })
     </script>

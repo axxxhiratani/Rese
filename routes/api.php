@@ -4,6 +4,8 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\ShopController;
 use App\Http\Controllers\GenreController;
+use App\Http\Controllers\AreaController;
+use App\Http\Controllers\FavoriteController;
 /*
 |--------------------------------------------------------------------------
 | API Routes
@@ -25,5 +27,15 @@ Route::prefix("v1/shop")->group(function(){
 });
 
 Route::prefix("v1/genre")->group(function(){
-    Route::get("/",[GenreController::class,"showAll"]);
+    Route::get("/",[GenreController::class,"index"]);
+});
+
+Route::prefix("v1/area")->group(function(){
+    Route::get("/",[AreaController::class,"index"]);
+});
+
+Route::prefix("v1/favorite")->group(function(){
+    Route::get("/{id?}",[FavoriteController::class,"show"]);
+    Route::post("/",[FavoriteController::class,"store"]);
+    Route::delete("/",[FavoriteController::class,"destroy"]);
 });

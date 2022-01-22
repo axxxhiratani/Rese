@@ -1,0 +1,24 @@
+.container--done{
+    width: 40%;
+    margin: 50px auto;
+    border: 1px solid #000;
+    border-radius: 5px;
+    text-align: center;
+}
+.container--done--message{
+    display: inline-block;
+    margin: 50px 0 25px 0;
+    width: 100%;
+}
+.container--done--link{
+    display: inline-block;
+    color: #fff;
+    background: #0000ff;
+    padding: 5px 10px;
+    border-radius: 5px;
+    margin-bottom: 50px;
+}
+
+.container--done--link:hover{
+    opacity: 0.5;
+}

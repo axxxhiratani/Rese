@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\Shop;
 use App\Models\Genre;
+use App\Models\Area;
 
 class ShopController extends Controller
 {
@@ -17,16 +18,31 @@ class ShopController extends Controller
 
     public function showAll()
     {
-        $shops = Shop::all();
+        $shops = Shop::paginate(12);
         $genres = Genre::all();
+        $areas = Area::all();
         for($i = 0; $i < count($shops); $i++){
+
+            //ジャンル情報の代入
             $genre_id = $shops[$i]["genre_id"];
             for($j = 0; $j < count($genres); $j++){
                 if($genres[$j]["id"] === $genre_id){
                     $genre = $genres[$j];
                 }
-                $shops[$i]["genre_id"] = $genre;
             }
+            $shops[$i]["genre_id"] = $genre;
+
+            //エリア情報の代入
+            $area_id = $shops[$i]["area_id"];
+            for($j = 0; $j < count($areas); $j++){
+                if($areas[$j]["id"] === $area_id){
+                    $area = $areas[$j];
+                }
+            }
+            $shops[$i]["area_id"] = $area;
+
+
+
         }
         return response()->json([
             "shops" => $shops
@@ -45,9 +61,9 @@ class ShopController extends Controller
     public function search(Request $request)
     {
         $sql = array();
-        if($request->area){
+        if($request->area_id){
             $data = [
-                "area",$request->area
+                "area_id",$request->area_id
             ];
             array_push($sql,$data);
         }
@@ -64,17 +80,31 @@ class ShopController extends Controller
             array_push($sql,$data);
         }
 
-        $shops = Shop::where($sql)->get();
+        $shops = Shop::where($sql)->paginate(12);
         $genres = Genre::all();
+        $areas = Area::all();
+
         for($i = 0; $i < count($shops); $i++){
+
+            //ジャンル情報の代入
             $genre_id = $shops[$i]["genre_id"];
             for($j = 0; $j < count($genres); $j++){
                 if($genres[$j]["id"] === $genre_id){
                     $genre = $genres[$j];
                 }
-                $shops[$i]["genre_id"] = $genre;
             }
+            $shops[$i]["genre_id"] = $genre;
+
+            //エリア情報の代入
+            $area_id = $shops[$i]["area_id"];
+            for($j = 0; $j < count($areas); $j++){
+                if($areas[$j]["id"] === $area_id){
+                    $area = $areas[$j];
+                }
+            }
+            $shops[$i]["area_id"] = $area;
         }
+
         return response()->json([
             "shops" => $shops
         ]);

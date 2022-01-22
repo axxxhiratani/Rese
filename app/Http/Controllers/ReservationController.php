@@ -13,13 +13,12 @@ class ReservationController extends Controller
     //
     public function store(Request $request)
     {
-        $user = Auth::user();
-        $id = Auth::id();
         Reservation::create([
-            "user_id" => $id,
+            "user_id" => $request->user_id,
             "shop_id" => $request->shop_id,
             "visited_on" =>$request->date." ".$request->time,
             "number_of_people" => $request->number_of_people,
         ]);
+        return view("done");
     }
 }

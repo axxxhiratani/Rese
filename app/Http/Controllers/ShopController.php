@@ -19,31 +19,12 @@ class ShopController extends Controller
     public function showAll()
     {
         $shops = Shop::paginate(12);
-        $genres = Genre::all();
-        $areas = Area::all();
-        for($i = 0; $i < count($shops); $i++){
 
-            //ジャンル情報の代入
-            $genre_id = $shops[$i]["genre_id"];
-            for($j = 0; $j < count($genres); $j++){
-                if($genres[$j]["id"] === $genre_id){
-                    $genre = $genres[$j];
-                }
-            }
-            $shops[$i]["genre_id"] = $genre;
-
-            //エリア情報の代入
-            $area_id = $shops[$i]["area_id"];
-            for($j = 0; $j < count($areas); $j++){
-                if($areas[$j]["id"] === $area_id){
-                    $area = $areas[$j];
-                }
-            }
-            $shops[$i]["area_id"] = $area;
-
-
-
+        foreach($shops as $index => $shop){
+            $shops[$index]["genre_id"] = $shop->genre;
+            $shops[$index]["area_id"] = $shop->area;
         }
+
         return response()->json([
             "shops" => $shops
         ]);
@@ -81,28 +62,9 @@ class ShopController extends Controller
         }
 
         $shops = Shop::where($sql)->paginate(12);
-        $genres = Genre::all();
-        $areas = Area::all();
-
-        for($i = 0; $i < count($shops); $i++){
-
-            //ジャンル情報の代入
-            $genre_id = $shops[$i]["genre_id"];
-            for($j = 0; $j < count($genres); $j++){
-                if($genres[$j]["id"] === $genre_id){
-                    $genre = $genres[$j];
-                }
-            }
-            $shops[$i]["genre_id"] = $genre;
-
-            //エリア情報の代入
-            $area_id = $shops[$i]["area_id"];
-            for($j = 0; $j < count($areas); $j++){
-                if($areas[$j]["id"] === $area_id){
-                    $area = $areas[$j];
-                }
-            }
-            $shops[$i]["area_id"] = $area;
+        foreach($shops as $index => $shop){
+            $shops[$index]["genre_id"] = $shop->genre;
+            $shops[$index]["area_id"] = $shop->area;
         }
 
         return response()->json([

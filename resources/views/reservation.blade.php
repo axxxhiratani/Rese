@@ -3,7 +3,7 @@
 </head>
 
 <x-layout>
-    <div class="container" id="app">
+    <div class="container--reservation" id="app">
         <div class="container__detail">
             <a href="/" class="container__detail--back"><</a>
             <p class="container__detail--name">{{$shop->name}}</p>

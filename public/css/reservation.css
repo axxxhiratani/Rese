@@ -1,12 +1,13 @@
-.container{
-    width: 100%;
+.container--reservation {
+    width: 95%;
+    display: flex;
+    justify-content: space-around;
+    margin: 0 auto;
 }
 
 .container__detail{
     display: inline-block;
     width: 40%;
-    float: left;
-    margin-left: 50px;
     margin-top: 50px;
 }
 
@@ -44,9 +45,7 @@
 
 .container__form{
     display: inline-block;
-    width: 40%;
-    float: left;
-    margin-left: 50px;
+    width: 50%;
     background: #4169e1;
     border-radius: 5px;
 }

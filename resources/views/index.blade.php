@@ -26,18 +26,18 @@
                 <img class="container__list__shop--img" v-bind:src="shop.image" alt="">
                 <p class="container__list__shop--name">@{{shop.name}}</p>
 
-                <p class="container__list__shop--info">
-                    <span>
+                <div class="container__list__shop--info">
+                    <p>
                         #@{{shop.area_id.name}}
-                    </span>
-                    <span>
+                    </p>
+                    <p>
                         #@{{shop.genre_id.name}}
-                    </span>
-                </p>
+                    </p>
+                </div>
                 <div class="container__list__shop--buttom">
                     <a @click="detail(shop.id)" class="container__list__shop--buttom--detail">詳しくみる</a>
                     <a @click="clickFavorite(shop.id,user_id,index)" class="container__list__shop--buttom--favorite">
-                        <i v-bind:class="decorationFavorite(shop.id,1,index)">
+                        <i v-bind:class="decorationFavorite(shop.id,user_id,index)">
                         </i>
                     </a>
                 </div>
@@ -84,6 +84,7 @@
                     this.getShopSearch();
                 }
             },
+
             methods:{
                 getShopAll:async function(){
                     let url = "api/v1/shop";
@@ -104,7 +105,6 @@
                     });
                     $(".container__page__link").eq(1).addClass("active");
                     $(".container__page__link").eq(1).find("a").addClass("active");
-
                 },
 
                 getShopSearch:async function(){
@@ -159,7 +159,6 @@
                 },
 
                 getAreaAll:async function(){
-
                     let url = "api/v1/area";
                     await axios.get(url)
                     .then(function (response) {
@@ -217,11 +216,15 @@
                 },
 
                 clickFavorite:function(shop_id,user_id,index){
-                    console.log(index);
                     if(!this.checkFavorite(shop_id,user_id,index)){
+                        if(!window.confirm("お気に入り登録しますか？")){
+                            return;
+                        }
                         this.addFavorite(shop_id,user_id,index);
                     }else{
-                        console.log("delete");
+                        if(!window.confirm("お気に入りを解除しますか？")){
+                            return;
+                        }
                         this.deleteFavorite(shop_id,user_id,index);
                     }
 
@@ -243,6 +246,7 @@
                     .finally(function () {
                     // always executed(axiosの処理結果によらずいつも実行させたい処理を記述)
                     });
+                    alert("お気に入り登録しました。");
                     this.toggleHert(index);
                 },
                 deleteFavorite:async function(shop_id,user_id,index){
@@ -263,6 +267,7 @@
                     .finally(function () {
                     // always executed(axiosの処理結果によらずいつも実行させたい処理を記述)
                     });
+                    alert("お気に入りを解除しました。");
                     this.toggleHert(index);
                 },
 

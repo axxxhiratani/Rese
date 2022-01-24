@@ -1,0 +1,140 @@
+.container--mypage{
+    width: 90%;
+    display: flex;
+    justify-content:space-around;
+    flex-wrap:wrap;
+    margin: 0 auto;
+}
+
+.container__profile{
+    width: 100%;
+    margin-top: 15px;
+}
+.container__profile__name{
+    width: 50%;
+    margin-left: 50%;
+    font-weight: bold;
+    font-size: 25px;
+}
+.container__reservation{
+    width: 50%;
+    display: inline-block;
+    margin-top: 50px;
+}
+.container__reservation--title{
+    font-weight: bold;
+    font-size: 25px;
+    margin: 10px 5px;
+}
+.container__reservation__list__info{
+    margin: 5px 20px;
+}
+.container__reservation__list__info--cancel{
+    display: inline-block;
+    margin-left: 75%;
+}
+.container__reservation__list{
+    color: #fff;
+    display: inline-block;
+    background: #4169e1;
+    width: 60%;
+    margin:10px 0 50px 10px;
+    padding: 10px 10px;
+    border-radius: 5px;
+}
+.container__reservation__list__info--title {
+    display: inline-block;
+    color: #fff;
+    font-weight: bold;
+    margin: 10px 0;
+    margin-left: 10px;
+}
+
+.container__reservation__list__table{
+    margin: 10px 20px;
+}
+
+.container__reservation__list__table__tr{
+    margin: 20px 0;
+}
+
+.container__reservation__list__table__tr--th{
+    display: inline-block;
+    width: 80px;
+    color: #fff;
+}
+
+.container__reservation__list__table__tr--td{
+    display: inline-block;
+    width: 100px;
+    color: #fff;
+}
+
+.container__favorite{
+    width: 50%;
+    display: inline-block;
+    /* margin-top: 50px; */
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+
+}
+.container__favorite--title{
+    width: 100%;
+    font-weight: bold;
+    font-size: 25px;
+    margin: 10px 0px;
+    height: 20px;
+}
+.container__favorite__shop {
+    width: 45%;
+    border: #000 solid 1px;
+    margin: 10px 0;
+    border-radius: 5px;
+    background: #fff;
+    box-shadow: 5px 5px 5px #696969;
+}
+
+.container__favorite__shop--img {
+    width: 100%;
+    border-top-right-radius: 3px 3px;
+    border-top-left-radius: 3px 3px;
+}
+
+.container__favorite__shop--name {
+    font-weight: bold;
+    font-size: 20px;
+    margin: 20px;
+}
+
+.container__favorite__shop--info {
+    margin: 20px;
+    font-size: 10px;
+    font-weight: bold;
+}
+
+.container__favorite__shop--info>p {
+    display: inline-block;
+}
+
+.container__favorite__shop--buttom {
+    display: flex;
+    justify-content: space-between;
+    margin: 20px;
+}
+
+.container__favorite__shop--buttom--detail {
+    color: #fff;
+    background: #0000ff;
+    border-radius: 5px;
+    padding: 8px 12px;
+    cursor: pointer;
+}
+
+.container__favorite__shop--buttom--favorite {
+    cursor: pointer;
+}
+
+.favorited {
+    color: red;
+}

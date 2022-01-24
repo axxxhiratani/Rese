@@ -19,6 +19,20 @@ class ReservationController extends Controller
             "visited_on" =>$request->date." ".$request->time,
             "number_of_people" => $request->number_of_people,
         ]);
-        return view("done");
+        return view("user.done");
+    }
+
+    public function destroy($id)
+    {
+        $item = Reservation::where("id",$id)->delete();
+        if($item){
+            return response()->json([
+                "message" => "Deleted Reservation"
+            ]);
+        }else{
+            return response()->json([
+                "message" => "Not Found"
+            ]);
+        }
     }
 }

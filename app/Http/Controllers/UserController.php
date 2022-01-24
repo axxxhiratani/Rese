@@ -9,22 +9,6 @@ use App\Models\User;
 
 class UserController extends Controller
 {
-    //会員登録画面に遷移
-    // public function register()
-    // {
-    //     return redirect("register");
-    // }
-
-    // //会員登録の実装
-    // public function store(Request $request)
-    // {
-    //     User::create([
-    //         'name' => $request->name,
-    //         'email' => $request->email,
-    //         'password' => Hash::make($request->password),
-    //     ]);
-    //     return redirect("thanks");
-    // }
 
     //サンクス画面に遷移
     public function thanks()
@@ -32,4 +16,31 @@ class UserController extends Controller
         return view("thanks");
     }
 
+    //
+    public function mypage()
+    {
+        return view("user.mypage");
+    }
+
+    public function show($id)
+    {
+        $favorites = User::where("id",$id)->with("favorites")->get();
+        $reservations = User::where("id",$id)->with("reservations")->get();
+
+        foreach($favorites[0]->favorites as $index => $favorite){
+            $favorites[0]->favorites[$index]["shop_id"] = $favorite->shop;
+            $favorites[0]->favorites[$index]["shop_id"]["genre_id"] = $favorite->shop->genre;
+            $favorites[0]->favorites[$index]["shop_id"]["area_id"] = $favorite->shop->area;
+        }
+
+        foreach($reservations[0]->reservations as $index => $reservation){
+            $reservations[0]->reservations[$index]["shop_id"] = $reservation->shop;
+        }
+
+
+        return response()->json([
+            "favorites" => $favorites,
+            "reservations" => $reservations
+        ]);
+    }
 }

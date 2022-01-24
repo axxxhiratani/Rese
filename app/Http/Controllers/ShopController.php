@@ -36,7 +36,7 @@ class ShopController extends Controller
         $data = [
             "shop" => $shop
         ];
-        return view("reservation",$data);
+        return view("user.reservation",$data);
     }
 
     public function search(Request $request)
@@ -66,6 +66,8 @@ class ShopController extends Controller
             $shops[$index]["genre_id"] = $shop->genre;
             $shops[$index]["area_id"] = $shop->area;
         }
+
+
 
         return response()->json([
             "shops" => $shops

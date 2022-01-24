@@ -6,6 +6,8 @@ use App\Http\Controllers\ShopController;
 use App\Http\Controllers\GenreController;
 use App\Http\Controllers\AreaController;
 use App\Http\Controllers\FavoriteController;
+use App\Http\Controllers\UserController;
+use App\Http\Controllers\ReservationController;
 /*
 |--------------------------------------------------------------------------
 | API Routes
@@ -32,6 +34,14 @@ Route::prefix("v1/genre")->group(function(){
 
 Route::prefix("v1/area")->group(function(){
     Route::get("/",[AreaController::class,"index"]);
+});
+
+Route::prefix("v1/user")->group(function(){
+    Route::get("/{id?}",[UserController::class,"show"]);
+});
+
+Route::prefix("v1/reservation")->group(function(){
+    Route::delete("/{id?}",[ReservationController::class,"destroy"]);
 });
 
 Route::prefix("v1/favorite")->group(function(){

@@ -17,7 +17,7 @@
                 @if (Auth::id())
                     <li><a href="/">Home</a></li>
                     <li><a href="/logout">Logout</a></li>
-                    <li><a href="#">Mypage</a></li>
+                    <li><a href="/mypage">Mypage</a></li>
                 @else
                     <li><a href="/">Home</a></li>
                     <li><a href="/register">Registration</a></li>

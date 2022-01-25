@@ -49,3 +49,8 @@ h1{
     cursor: pointer;
     margin-left: 78%;
 }
+.container--register__form__input--error{
+    color: red;
+    margin: 5px 0;
+    font-size: 5px;
+}

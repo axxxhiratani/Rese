@@ -44,10 +44,16 @@
             </div>
         </div>
         <div class="container__page">
-            <div @click="movePage(link.url,index)" v-for="(link,index) in links" class="container__page__link">
-                <a v-if="index == 0"><</a>
-                <a v-else-if="index ==last_page+1">></a>
-                <a v-else>@{{link.label}}</a>
+            <div @click="movePage(link.url)" v-for="(link) in links" v-bind:class="activePage(link.active)">
+                <a v-if="link.label.includes('Previous')" v-bind:class="activePageLink(link.active)">
+                    <
+                </a>
+                <a v-else-if="link.label.includes('Next')" v-bind:class="activePageLink(link.active)">
+                    >
+                </a>
+                <a v-else v-bind:class="activePageLink(link.active)">
+                    @{{link.label}}
+                </a>
             </div>
         </div>
     </div>
@@ -67,8 +73,6 @@
                 links:[],
                 favorites:[],
                 user_id:{{Auth::id()}},
-                current_page:"",
-                last_page:"",
                 area_id:"",
                 genre_id:"",
                 name:"",
@@ -93,8 +97,7 @@
                     // handle success(axiosの処理が成功した場合に処理させたいことを記述)
                         vm.shops = response.data.shops.data;
                         vm.links = response.data.shops.links;
-                        vm.current_page = response.data.shops.current_page;
-                        vm.last_page = response.data.shops.last_page;
+                        console.log(vm.links);
                     })
                     .catch(function (error) {
                     // handle error(axiosの処理にエラーが発生した場合に処理させたいことを記述)
@@ -103,8 +106,6 @@
                     .finally(function () {
                     // always executed(axiosの処理結果によらずいつも実行させたい処理を記述)
                     });
-                    $(".container__page__link").eq(1).addClass("active");
-                    $(".container__page__link").eq(1).find("a").addClass("active");
                 },
 
                 getShopSearch:async function(){
@@ -120,11 +121,6 @@
                     // handle success(axiosの処理が成功した場合に処理させたいことを記述)
                         vm.shops = response.data.shops.data;
                         vm.links = response.data.shops.links;
-                        vm.current_page = response.data.shops.current_page;
-                        vm.last_page = response.data.shops.last_page;
-                        $(".container__page__link").removeClass("active");
-                        $(".container__page__link").eq(1).addClass("active");
-                        $(".container__page__link").eq(1).find("a").addClass("active");
                     })
                     .catch(function (error) {
                     // handle error(axiosの処理にエラーが発生した場合に処理させたいことを記述)
@@ -186,7 +182,6 @@
                     .then(function (response) {
                     // handle success(axiosの処理が成功した場合に処理させたいことを記述)
                         vm.favorites = response.data.favorites;
-                        console.log(vm.favorites);
                     })
                     .catch(function (error) {
                     // handle error(axiosの処理にエラーが発生した場合に処理させたいことを記述)
@@ -271,22 +266,10 @@
                     this.toggleHert(index);
                 },
 
-                movePage:async function(url,index){
+                movePage:async function(url){
 
                     if(!url){
                         return;
-                    }
-                    $(".container__page__link").removeClass("active");
-                    $(".container__page__link").find("a").removeClass("active");
-                    if(index ==0){
-                        $(".container__page__link").eq(this.current_page -1).addClass("active");
-                        $(".container__page__link").eq(this.current_page -1).find("a").addClass("active");
-                    }else if(index == this.last_page + 1){
-                        $(".container__page__link").eq(this.current_page + 1).addClass("active");
-                        $(".container__page__link").eq(this.current_page + 1).find("a").addClass("active");
-                    }else{
-                        $(".container__page__link").eq(index).addClass("active");
-                        $(".container__page__link").eq(index).find("a").addClass("active");
                     }
                     await axios.get(url,{
                         params:{
@@ -299,8 +282,6 @@
                     // handle success(axiosの処理が成功した場合に処理させたいことを記述)
                         vm.shops = response.data.shops.data;
                         vm.links = response.data.shops.links;
-                        vm.current_page = response.data.shops.current_page;
-                        vm.last_page = response.data.shops.last_page;
                     })
                     .catch(function (error) {
                     // handle error(axiosの処理にエラーが発生した場合に処理させたいことを記述)
@@ -318,6 +299,22 @@
                     $(".container__list__shop--buttom--favorite").eq(index).find("i").toggleClass("fas");
                 },
 
+                activePage:function(data){
+                    let style = "";
+                    if(data){
+                        style = "container__page__link active";
+                    }else{
+                        style = "container__page__link";
+                    }
+                    return style;
+                },
+                activePageLink:function(data){
+                    let style = "";
+                    if(data){
+                        style = "active";
+                    }
+                    return style;
+                },
                 detail:function(id){
                     window.location.href = `/detail/${id}`;
                 }
@@ -327,6 +324,6 @@
                 this.getAreaAll();
                 this.getGenreAll();
                 this.getFavorite();
-            }
+            },
         })
     </script>

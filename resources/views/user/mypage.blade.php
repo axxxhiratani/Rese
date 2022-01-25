@@ -134,6 +134,7 @@
                 // always executed(axiosの処理結果によらずいつも実行させたい処理を記述)
                 });
                 this.getUser();
+                alert("予約をキャンセルしました。")
             },
             detail:function(id){
                 window.location.href = `/detail/${id}`;
@@ -163,6 +164,7 @@
                 console.log(data.user_id);
                 console.log(data.shop_id.id);
                 this.getUser();
+                alert("お気に入り解除しました。")
             },
         },
         filters:{
@@ -175,6 +177,7 @@
                 console.log(date);
                 const dt = Date.parse(date);
                 var date = new Date(dt);
+                console.log(`${date.getHours()}:${date.getMinutes()}`);
                 return `${date.getHours()}:${date.getMinutes()}`;
             },
         },

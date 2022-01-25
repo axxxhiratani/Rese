@@ -15,16 +15,25 @@
             <div class="container--register__form__input">
                 <label for=""><i class="fas fa-user"></i></label>
                 <input type="text" name="name" class="container--register__form__input--text" placeholder="Username">
+                @error('name')
+                    <p class="container--register__form__input--error">{{$message}}</p>
+                @enderror
             </div>
 
             <div class="container--register__form__input">
                 <label for=""><i class="fas fa-envelope"></i></label>
                 <input type="email" name="email" class="container--register__form__input--text" placeholder="Email">
+                @error('email')
+                    <p class="container--register__form__input--error">{{$message}}</p>
+                @enderror
             </div>
 
             <div class="container--register__form__input">
                 <label for=""><i class="fas fa-lock"></i></label>
                 <input type="password" name="password" class="container--register__form__input--text" placeholder="Password">
+                @error('password')
+                    <p class="container--register__form__input--error">{{$message}}</p>
+                @enderror
             </div>
 
             <button type="submit" class="container--register__form--button">登録</button>

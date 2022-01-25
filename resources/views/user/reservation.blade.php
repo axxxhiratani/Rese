@@ -20,6 +20,9 @@
             <form action="/done" method="post">
                 @csrf
                 <input type="date" name="date" class="container__form--date" v-model="date">
+                @error('date')
+                    <p class="container__form--error">{{$message}}</p>
+                @enderror
                 <select name="time" class="container__form--select" v-model="time">
                     @for ($i = 0; $i < 24; $i++)
                     @if ($i <= 9)
@@ -31,6 +34,9 @@
                     @endif
                     @endfor
                 </select>
+                @error('time')
+                    <p class="container__form--error">{{$message}}</p>
+                @enderror
                 <select name="number_of_people" class="container__form--select" v-model="number">
                     @for ($i = 1; $i < 10; $i++)
                     <option value="{{$i}}">{{$i}}人</option>
@@ -50,7 +56,7 @@
                     </div>
                     <div class="container__form__info__tr">
                         <p class="container__form__info__tr--th">Time</p>
-                        <p class="container__form__info__tr--td">@{{time}}</p>
+                        <p class="container__form__info__tr--td">@{{time | changeTime}}</p>
                     </div>
                     <div class="container__form__info__tr">
                         <p class="container__form__info__tr--th">Number</p>
@@ -77,6 +83,15 @@
             date:"",
             time:"",
             number:1,
-        }
+        },
+        filters:{
+            changeTime:async function(date){
+                console.log(date);
+                const dt = Date.parse(date);
+                var date = new Date(dt);
+                console.log(`${date.getHours()}:${date.getMinutes()}`);
+                return `${date.getHours()}:${date.getMinutes()}`;
+            },
+        },
     })
 </script>

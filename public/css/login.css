@@ -52,3 +52,8 @@ h1 {
     cursor: pointer;
     margin-left: 78%;
 }
+.container--login__form__input--error{
+    color: red;
+    font-size: 10px;
+    margin: 5px 0;
+}

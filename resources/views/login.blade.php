@@ -12,15 +12,20 @@
     <div class="container--login__form">
         <form action="/login" method="post">
             @csrf
-
             <div class="container--login__form__input">
                 <label for=""><i class="fas fa-envelope"></i></label>
                 <input type="email" name="email" class="container--login__form__input--text" placeholder="Email">
+                @error('email')
+                    <p class="container--login__form__input--error">{{$message}}</p>
+                @enderror
             </div>
 
             <div class="container--login__form__input">
                 <label for=""><i class="fas fa-lock"></i></label>
                 <input type="password" name="password" class="container--login__form__input--text" placeholder="Password">
+                @error('password')
+                    <p class="container--login__form__input--error">{{$message}}</p>
+                @enderror
             </div>
 
             <button type="submit" class="container--login__form--button">ログイン</button>

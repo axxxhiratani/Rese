@@ -62,7 +62,6 @@
             <div class="container__favorite__shop" v-for="favorite in favorites">
                 <img class="container__favorite__shop--img" v-bind:src="favorite.shop_id.image" alt="">
                 <p class="container__favorite__shop--name">@{{favorite.shop_id.name}}</p>
-
                 <div class="container__favorite__shop--info">
                     <p>
                         #@{{favorite.shop_id.area_id.name}}

@@ -27,17 +27,17 @@
     margin: 10px 5px;
 }
 .container__reservation__list__info{
-    margin: 5px 20px;
+    margin: 5px 0 0 20px;
 }
 .container__reservation__list__info--cancel{
     display: inline-block;
-    margin-left: 75%;
+    margin-left: 70%;
 }
 .container__reservation__list{
     color: #fff;
     display: inline-block;
     background: #4169e1;
-    width: 60%;
+    width: 50%;
     margin:10px 0 50px 10px;
     padding: 10px 10px;
     border-radius: 5px;
@@ -127,7 +127,7 @@
     color: #fff;
     background: #0000ff;
     border-radius: 5px;
-    padding: 8px 12px;
+    padding: 20px 20px;
     cursor: pointer;
 }
 
@@ -139,4 +139,23 @@
 
 .favorited {
     color: red;
+}
+@media screen and (max-width: 768px) {
+
+    .container__profile__name{
+        width: 90%;
+        margin:0 auto;
+        text-align: center;
+    }
+    .container__reservation {
+        width: 90%;
+    }
+    .container__reservation__list{
+        width: 70%;
+        padding: 10px 60px;
+    }
+
+    .container__favorite {
+        width: 90%;
+    }
 }

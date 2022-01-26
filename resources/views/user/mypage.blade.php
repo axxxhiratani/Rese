@@ -16,40 +16,41 @@
             <div class="container__reservation--title">
                 <p>予約状況</p>
             </div>
-                <div class="container__reservation__list" v-for="(reservation,index) in reservations">
-                    <div class="container__reservation__list__info">
-                        <i class="fas fa-clock"></i>
-                        <p class="container__reservation__list__info--title">予約@{{index+1}}</p>
-                        <i class="far fa-window-close container__reservation__list__info--cancel" @click="cancelReservation(reservation.id)"></i>
-                    </div>
-                    <div class="container__reservation__list__table">
-
-                        <div class="container__reservation__list__table__tr">
-                            <p class="container__reservation__list__table__tr--th">Shop</p>
-                            <p class="container__reservation__list__table__tr--td">@{{reservation.shop_id.name}}</p>
-                        </div>
-
-                        <div class="container__reservation__list__table__tr">
-                            <p class="container__reservation__list__table__tr--th">Date</p>
-                            <p class="container__reservation__list__table__tr--td">
-                                @{{reservation.visited_on | changeDate}}
-                            </p>
-                        </div>
-
-                        <div class="container__reservation__list__table__tr">
-                            <p class="container__reservation__list__table__tr--th">Time</p>
-                            <p class="container__reservation__list__table__tr--td">
-                                @{{reservation.visited_on | changeTime}}
-                            </p>
-                        </div>
-
-                        <div class="container__reservation__list__table__tr">
-                            <p class="container__reservation__list__table__tr--th">Number</p>
-                            <p class="container__reservation__list__table__tr--td">@{{reservation.number_of_people}}人</p>
-                        </div>
-
-                    </div>
+            <p v-if="reservation_message">予約がありません。</p>
+            <div class="container__reservation__list" v-for="(reservation,index) in reservations">
+                <div class="container__reservation__list__info">
+                    <i class="fas fa-clock"></i>
+                    <p class="container__reservation__list__info--title">予約@{{index+1}}</p>
+                    <i class="far fa-window-close container__reservation__list__info--cancel" @click="cancelReservation(reservation.id)"></i>
                 </div>
+                <div class="container__reservation__list__table">
+
+                    <div class="container__reservation__list__table__tr">
+                        <p class="container__reservation__list__table__tr--th">Shop</p>
+                        <p class="container__reservation__list__table__tr--td">@{{reservation.shop_id.name}}</p>
+                    </div>
+
+                    <div class="container__reservation__list__table__tr">
+                        <p class="container__reservation__list__table__tr--th">Date</p>
+                        <p class="container__reservation__list__table__tr--td">
+                            @{{reservation.visited_on | changeDate}}
+                        </p>
+                    </div>
+
+                    <div class="container__reservation__list__table__tr">
+                        <p class="container__reservation__list__table__tr--th">Time</p>
+                        <p class="container__reservation__list__table__tr--td">
+                            @{{reservation.visited_on | changeTime}}
+                        </p>
+                    </div>
+
+                    <div class="container__reservation__list__table__tr">
+                        <p class="container__reservation__list__table__tr--th">Number</p>
+                        <p class="container__reservation__list__table__tr--td">@{{reservation.number_of_people}}人</p>
+                    </div>
+
+                </div>
+            </div>
         </div>
 
         <div class="container__favorite">
@@ -57,17 +58,17 @@
             <div class="container__favorite--title">
                 <p>お気に入り店舗</p>
             </div>
-
+            <p v-if="favorite_message">お気に入りがありません。</p>
             <div class="container__favorite__shop" v-for="favorite in favorites">
                 <img class="container__favorite__shop--img" v-bind:src="favorite.shop_id.image" alt="">
                 <p class="container__favorite__shop--name">@{{favorite.shop_id.name}}</p>
 
                 <div class="container__favorite__shop--info">
                     <p>
-                        @{{favorite.shop_id.area_id.name}}
+                        #@{{favorite.shop_id.area_id.name}}
                     </p>
                     <p>
-                        @{{favorite.shop_id.genre_id.name}}
+                        #@{{favorite.shop_id.genre_id.name}}
                     </p>
                 </div>
                 <div class="container__favorite__shop--buttom">
@@ -97,6 +98,8 @@
             user_id:{{Auth::id()}},
             reservations:[],
             favorites:[],
+            reservation_message:false,
+            favorite_message:false,
         },
         methods:{
             getUser:async function(){
@@ -107,6 +110,16 @@
                     vm.name = response.data.favorites[0].name;
                     vm.reservations = response.data.reservations[0].reservations;
                     vm.favorites = response.data.favorites[0].favorites;
+                    if(vm.reservations.length == 0){
+                        vm.reservation_message = true;
+                    }else{
+                        vm.reservation_message = false;
+                    }
+                    if(vm.favorites.length == 0){
+                        vm.favorite_message = true;
+                    }else{
+                        vm.favorite_message = false;
+                    }
 
                 })
                 .catch(function (error) {

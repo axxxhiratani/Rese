@@ -193,7 +193,7 @@
                 },
 
                 decorationFavorite:function(shop_id,user_id,index){
-                    let style = "far fa-heart";
+                    let style = "fas fa-heart";
                     if(this.checkFavorite(shop_id,user_id,index)){
                         style = "fas fa-heart favorited"
                     }
@@ -271,6 +271,7 @@
                     if(!url){
                         return;
                     }
+                    this.getFavorite();
                     await axios.get(url,{
                         params:{
                             area_id:this.area_id,
@@ -290,13 +291,10 @@
                     .finally(function () {
                     // always executed(axiosの処理結果によらずいつも実行させたい処理を記述)
                     });
-                    this.getFavorite();
                 },
 
                 toggleHert:function(index){
                     $(".container__list__shop--buttom--favorite").eq(index).find("i").toggleClass("favorited");
-                    $(".container__list__shop--buttom--favorite").eq(index).find("i").toggleClass("far");
-                    $(".container__list__shop--buttom--favorite").eq(index).find("i").toggleClass("fas");
                 },
 
                 activePage:function(data){

@@ -48,35 +48,36 @@
     width: 50%;
     background: #4169e1;
     border-radius: 5px;
+    padding-top: 20px;
 }
 
 .container__form--name{
     display: inline-block;
     color: #fff;
+    font-size: 20px;
     font-weight: bold;
-    margin: 10px 0;
-    margin-left: 10px;
+    margin: 20px 15px;
 }
 
 .container__form--date{
     width: 50%;
     border-radius: 5px;
-    margin-left: 10px;
+    margin-left: 15px;
     margin-bottom: 5px;
 }
 
 .container__form--select{
     width: 90%;
     border-radius: 5px;
-    margin-left: 10px;
+    margin-left: 15px;
     margin-bottom: 5px;
 }
 
 .container__form__info{
     width: 80%;
     background: #b0c4de;
-    margin:10px 0 190px 10px;
-    padding: 10px 10px;
+    margin:15px 0 0px 15px;
+    padding: 15px 10px;
     border-radius: 5px;
 }
 
@@ -104,6 +105,7 @@
     border-bottom-right-radius: 5px;
     border: none;
     cursor: pointer;
+    margin-top: 40%;
 }
 .container__form--button:hover{
     opacity: 0.5;

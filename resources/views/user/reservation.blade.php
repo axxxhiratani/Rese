@@ -14,7 +14,6 @@
             </div>
             <p class="container__detail--overview">{{$shop->overview}}</p>
         </div>
-
         <div class="container__form">
             <p class="container__form--name">予約</p>
             <form action="/done" method="post">
@@ -82,7 +81,23 @@
         data:{
             date:"",
             time:"",
-            number:1,
+            number:"",
+        },
+        watch:{
+            date:function(){
+                localStorage.setItem("date",JSON.stringify(this.date));
+                },
+            time:function(){
+                localStorage.setItem("time",JSON.stringify(this.time));
+            },
+            number:function(){
+                localStorage.setItem("number",JSON.stringify(this.number));
+            },
+        },
+        mounted:function(){
+            this.date = JSON.parse(localStorage.getItem("date")) || "";
+            this.time = JSON.parse(localStorage.getItem("time")) || "";
+            this.number = JSON.parse(localStorage.getItem("number")) || "1";
         },
         filters:{
             changeTime:async function(date){

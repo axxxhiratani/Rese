@@ -1,7 +1,6 @@
 
 .container{
     width: 100%;
-    height: auto;
 }
 .container__search{
     border: #e6e6fa 1px solid;
@@ -73,13 +72,14 @@
     color: #fff;
     background: #0000ff;
     border-radius: 5px;
-    padding: 8px 12px;
     cursor: pointer;
+    padding: 20px 20px;
 }
 .container__list__shop--buttom--favorite{
     cursor: pointer;
     font-size: 50px;
     margin-right: 20px;
+    color: #d3d3d3;
 }
 .favorited {
     color: red;
@@ -101,3 +101,12 @@
     color: #fff;
 }
 
+@media screen and (max-width: 768px) {
+    .container__list__shop {
+        width: 90%;
+    }
+    .container__search{
+        width: 60%;
+        margin-left: 30%;
+    }
+}

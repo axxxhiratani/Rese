@@ -1,5 +1,6 @@
 <head>
     <link rel="stylesheet" href="{{asset('/css/reservation.css')}}">
+    <link rel="stylesheet" href="{{asset('/fontawesome-free-5.15.4-web/css/all.css')}}">
 </head>
 
 <x-layout>
@@ -51,7 +52,7 @@
                     </div>
                     <div class="container__form__info__tr">
                         <p class="container__form__info__tr--th">Date</p>
-                        <p class="container__form__info__tr--td">@{{date}}</p>
+                        <p class="container__form__info__tr--td">@{{date | changeDate}}</p>
                     </div>
                     <div class="container__form__info__tr">
                         <p class="container__form__info__tr--th">Time</p>
@@ -65,9 +66,29 @@
                 <button type="submit" class="container__form--button">予約する</button>
             </form>
         </div>
+    </div>
+    <div class="container__evaluation">
+            @foreach ($shop->evaluations as $evaluation)
+                <div class="container__evaluation__list">
+                    <p class="container__evaluation__list--name">
+                        <i class="fas fa-user"></i>
+                        {{$evaluation->user->name}}
+                    </p>
+                    <p class="container__evaluation__list--comment">
+                        {{$evaluation->comment}}
+                    </p>
+                    <p class="container__evaluation__list--star">
+                        @for ($i = 1; $i <= $evaluation->evaluation; $i++)
+                            <i class="fas fa-star"></i>
+                        @endfor
+                        ({{$evaluation->evaluation}})
+                    </p>
+                    <p class="container__evaluation__list--created">
+                        投稿日:{{$evaluation->created_at}}
+                    </p>
 
-
-
+                </div>
+            @endforeach
     </div>
 </x-layout>
 
@@ -100,12 +121,12 @@
             this.number = JSON.parse(localStorage.getItem("number")) || "1";
         },
         filters:{
-            changeTime:async function(date){
-                console.log(date);
-                const dt = Date.parse(date);
-                var date = new Date(dt);
-                console.log(`${date.getHours()}:${date.getMinutes()}`);
-                return `${date.getHours()}:${date.getMinutes()}`;
+            changeDate:function(date){
+                return date;
+            },
+            changeTime:function(date){
+
+                return date.slice(0,5);
             },
         },
     })

@@ -18,6 +18,7 @@ class CreateEvaluationsTable extends Migration
             $table->unsignedBigInteger("user_id");
             $table->unsignedBigInteger("shop_id");
             $table->unsignedDecimal('evaluation', 5, 1);
+            $table->text("comment");
             $table->timestamp("created_at")->useCurrent()->nullable();
             $table->timestamp("updated_at")->useCurrent()->nullable();
 

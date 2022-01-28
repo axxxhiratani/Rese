@@ -49,8 +49,13 @@
                         <p class="container__reservation__list__table__tr--td">@{{reservation.number_of_people}}人</p>
                     </div>
                 </div>
-                <div>
-                    <a @click="update(reservation.id)">予約変更</a>
+                <div class="container__reservation__list__edit">
+                    <a @click="update(reservation.id)" class="container__reservation__list__edit--link">
+                        予約変更
+                    </a>
+                    <a @click="evaluation(reservation.id)" class="container__reservation__list__edit--link">
+                        評価する
+                    </a>
                 </div>
             </div>
         </div>
@@ -61,23 +66,26 @@
                 <p>お気に入り店舗</p>
             </div>
             <p v-if="favorite_message">お気に入りがありません。</p>
-            <div class="container__favorite__shop" v-for="favorite in favorites">
-                <img class="container__favorite__shop--img" v-bind:src="favorite.shop_id.image" alt="">
-                <p class="container__favorite__shop--name">@{{favorite.shop_id.name}}</p>
-                <div class="container__favorite__shop--info">
-                    <p>
-                        #@{{favorite.shop_id.area_id.name}}
-                    </p>
-                    <p>
-                        #@{{favorite.shop_id.genre_id.name}}
-                    </p>
-                </div>
-                <div class="container__favorite__shop--buttom">
-                    <a @click="detail(favorite.shop_id.id)" class="container__favorite__shop--buttom--detail">詳しくみる</a>
-                    <a @click="clickFavorite(favorite)" class="container__favorite__shop--buttom--favorite">
-                        <i class="fas fa-heart favorited">
-                        </i>
-                    </a>
+
+            <div class="container__favorite__flex">
+                <div class="container__favorite__flex__shop" v-for="favorite in favorites">
+                    <img class="container__favorite__flex__shop--img" v-bind:src="favorite.shop_id.image" alt="">
+                    <p class="container__favorite__flex__shop--name">@{{favorite.shop_id.name}}</p>
+                    <div class="container__favorite__flex__shop--info">
+                        <p>
+                            #@{{favorite.shop_id.area_id.name}}
+                        </p>
+                        <p>
+                            #@{{favorite.shop_id.genre_id.name}}
+                        </p>
+                    </div>
+                    <div class="container__favorite__flex__shop--buttom">
+                        <a @click="detail(favorite.shop_id.id)" class="container__favorite__flex__shop--buttom--detail">詳しくみる</a>
+                        <a @click="clickFavorite(favorite)" class="container__favorite__flex__shop--buttom--favorite">
+                            <i class="fas fa-heart favorited">
+                            </i>
+                        </a>
+                    </div>
                 </div>
             </div>
         </div>
@@ -182,6 +190,9 @@
             },
             update:function(id){
                 window.location.href = `/update/${id}`;
+            },
+            evaluation:function(id){
+                window.location.href = `/evaluation/${id}`;
             }
         },
         filters:{

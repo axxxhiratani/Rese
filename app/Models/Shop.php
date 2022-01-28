@@ -6,6 +6,7 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use App\Models\Genre;
 use App\Models\Area;
+use App\Models\Evaluation;
 
 class Shop extends Model
 {
@@ -28,5 +29,10 @@ class Shop extends Model
     public function area()
     {
         return $this->belongsTo(Area::class);
+    }
+
+    public function evaluations()
+    {
+        return $this->hasMany(Evaluation::class);
     }
 }

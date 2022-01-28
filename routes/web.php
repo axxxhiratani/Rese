@@ -4,6 +4,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\ShopController;
 use App\Http\Controllers\ReservationController;
+use App\Http\Controllers\EvaluationController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -23,5 +24,34 @@ Route::get("/mypage",[UserController::class,"mypage"])->middleware(['auth']);
 
 Route::get('/update/{id?}',[ReservationController::class,"show"])->middleware(['auth']);
 Route::post('/update',[ReservationController::class,"update"])->middleware(['auth']);
+
+Route::get('/evaluation/{id?}',[EvaluationController::class,"show"])->middleware(['auth']);
+Route::post('/evaluation',[EvaluationController::class,"store"])->middleware(['auth']);
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+//owner
+Route::get('/owner/register', [OwnerController::class, 'createLogin'])
+                ->middleware('guest');
+Route::post('/owner/register', [OwnerController::class, 'storeLogin'])
+                ->middleware('guest');
+
+Route::get('/owner/login', [OwnerController::class, 'createRegister'])
+                ->middleware('guest');
+
+Route::post('/owner/login', [OwnerController::class, 'storeRegister'])
+                ->middleware('guest');
+
 
 require __DIR__.'/auth.php';

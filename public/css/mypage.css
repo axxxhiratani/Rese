@@ -70,14 +70,29 @@
     color: #fff;
 }
 
+.container__reservation__list__edit{
+    margin: 40px 0;
+    text-align: center;
+}
+.container__reservation__list__edit--link{
+    border: #fff 1px solid;
+    color: #fff;
+    cursor: pointer;
+    padding: 10px 20px;
+    margin: 10px 20px;
+    border-radius: 5px;
+    width: 5%;
+}
+.container__reservation__list__edit--link:hover{
+    background: #fff;
+    color: #000;
+}
+
 .container__favorite{
     width: 50%;
     display: inline-block;
-    /* margin-top: 50px; */
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: space-between;
-
+    width: 50%;
+    margin-top: 50px;
 }
 .container__favorite--title{
     width: 100%;
@@ -86,7 +101,13 @@
     margin: 10px 0px;
     height: 20px;
 }
-.container__favorite__shop {
+.container__favorite__flex{
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    line-height: 0;
+}
+.container__favorite__flex__shop {
     width: 45%;
     border: #000 solid 1px;
     margin: 10px 0;
@@ -95,43 +116,45 @@
     box-shadow: 5px 5px 5px #696969;
 }
 
-.container__favorite__shop--img {
+.container__favorite__flex__shop--img {
     width: 100%;
     border-top-right-radius: 3px 3px;
     border-top-left-radius: 3px 3px;
 }
 
-.container__favorite__shop--name {
+.container__favorite__flex__shop--name {
     font-weight: bold;
     font-size: 20px;
-    margin: 20px;
+    margin: 30px 20px;
 }
 
-.container__favorite__shop--info {
-    margin: 20px;
+.container__favorite__flex__shop--info {
+    margin: 30px 20px;
     font-size: 10px;
     font-weight: bold;
 }
 
-.container__favorite__shop--info>p {
+.container__favorite__flex__shop--info>p {
     display: inline-block;
 }
 
-.container__favorite__shop--buttom {
+.container__favorite__flex__shop--buttom {
     display: flex;
     justify-content: space-between;
     margin: 20px;
 }
 
-.container__favorite__shop--buttom--detail {
+.container__favorite__flex__shop--buttom--detail {
     color: #fff;
     background: #0000ff;
     border-radius: 5px;
     padding: 20px 20px;
     cursor: pointer;
+    width: 30%;
+    text-align: center;
 }
 
-.container__favorite__shop--buttom--favorite {
+.container__favorite__flex__shop--buttom--favorite {
     cursor: pointer;
     font-size: 50px;
     margin-right: 20px;

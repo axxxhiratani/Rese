@@ -32,7 +32,8 @@ class ShopController extends Controller
 
     public function show($id)
     {
-        $shop = Shop::where("id",$id)->first();
+        $shop = Shop::where("id",$id)->with("evaluations")->first();
+        // return $shop->evaluations;
         $data = [
             "shop" => $shop
         ];

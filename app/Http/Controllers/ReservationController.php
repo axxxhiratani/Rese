@@ -23,6 +23,22 @@ class ReservationController extends Controller
         return view("user.done");
     }
 
+    public function show($id)
+    {
+        $reservatoin = Reservation::where("id",$id)->first();
+        $date =  date("Y-m-d", strtotime($reservatoin->visited_on));
+
+
+        $time = date("h:i:s", strtotime($reservatoin->visited_on));/*$timeをセレクトボックスに代入したい。中身は09:00:00 */
+
+
+        return view("user.edit",[
+            "reservation" => $reservatoin,
+            "date" => $date,
+            "time" => (string)$time,
+        ]);
+    }
+
     public function destroy($id)
     {
         $item = Reservation::where("id",$id)->delete();

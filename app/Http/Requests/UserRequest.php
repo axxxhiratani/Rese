@@ -28,7 +28,7 @@ class UserRequest extends FormRequest
             //
             'name' => ['required', 'string', 'max:191'],
             'email' => ['required', 'string', 'email', 'max:191', 'unique:users'],
-            'password' => ['required', Rules\Password::defaults()],
+            'password' => ['required', 'min:8',Rules\Password::defaults()],
         ];
     }
 
@@ -44,6 +44,7 @@ class UserRequest extends FormRequest
             'email.max' => '191文字以下で入力してください',
             'email.unique' => 'このアカウント名は既に存在します',
             'password.required' => '入力必須です',
+            'password.min' => '8文字以上入力してください',
         ];
     }
 }

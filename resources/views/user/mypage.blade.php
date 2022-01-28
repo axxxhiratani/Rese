@@ -48,7 +48,9 @@
                         <p class="container__reservation__list__table__tr--th">Number</p>
                         <p class="container__reservation__list__table__tr--td">@{{reservation.number_of_people}}人</p>
                     </div>
-
+                </div>
+                <div>
+                    <a @click="update(reservation.id)">予約変更</a>
                 </div>
             </div>
         </div>
@@ -178,6 +180,9 @@
                 this.getUser();
                 alert("お気に入り解除しました。")
             },
+            update:function(id){
+                window.location.href = `/update/${id}`;
+            }
         },
         filters:{
             changeDate:function(date){
@@ -185,12 +190,15 @@
                 var date = new Date(dt);
                 return `${date.getFullYear()}/${date.getMonth()+1}/${date.getDate()}`;
             },
-            changeTime:async function(date){
+            changeTime:function(date){
                 console.log(date);
                 const dt = Date.parse(date);
                 var date = new Date(dt);
-                console.log(`${date.getHours()}:${date.getMinutes()}`);
-                return `${date.getHours()}:${date.getMinutes()}`;
+                var hour = date.getHours();
+                var min = date.getMinutes();
+                console.log(( '00' + hour).slice(-2));
+                console.log(( '00' + min).slice(-2));
+                return ( '00' + hour).slice(-2) + ":"+( '00' + min).slice(-2);
             },
         },
         created:function(){

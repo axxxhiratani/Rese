@@ -18,14 +18,9 @@ use App\Http\Controllers\ReservationController;
 Route::get('/',[ShopController::class,"index"])->middleware(['auth']);
 Route::get('/detail/{id?}',[ShopController::class,"show"])->middleware(['auth']);
 Route::post('/done',[ReservationController::class,"store"])->middleware(['auth']);
-
-
-
-Route::get('/dashboard', function () {
-    return view('dashboard');
-})->middleware(['auth'])->name('dashboard');
-
 Route::get("/thanks",[UserController::class,"thanks"]);
-Route::get("/mypage",[UserController::class,"mypage"]);
+Route::get("/mypage",[UserController::class,"mypage"])->middleware(['auth']);
+
+Route::get('/update/{id?}',[ReservationController::class,"show"])->middleware(['auth']);
 
 require __DIR__.'/auth.php';

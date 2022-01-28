@@ -22,5 +22,6 @@ Route::get("/thanks",[UserController::class,"thanks"]);
 Route::get("/mypage",[UserController::class,"mypage"])->middleware(['auth']);
 
 Route::get('/update/{id?}',[ReservationController::class,"show"])->middleware(['auth']);
+Route::post('/update',[ReservationController::class,"update"])->middleware(['auth']);
 
 require __DIR__.'/auth.php';

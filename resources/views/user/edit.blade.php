@@ -5,7 +5,7 @@
 <x-layout>
     <div class="container--reservation" id="app">
         <div class="container__detail">
-            <a href="/" class="container__detail--back"><</a>
+            <a href="/mypage" class="container__detail--back"><</a>
             <p class="container__detail--name"></p>
             <img class="container__detail--img" src="{{$reservation->shop->image}}" alt="">
             <div class="container__detail--info">
@@ -18,7 +18,7 @@
         </div>
         <div class="container__form">
             <p class="container__form--name">予約変更</p>
-            <form action="/done" method="post">
+            <form action="/update" method="post">
                 @csrf
                 <input type="date" name="date" class="container__form--date" value="{{$date}}">
                 @error('date')
@@ -49,8 +49,7 @@
                     <option value="{{$i}}">{{$i}}人</option>
                     @endfor
                 </select>
-                <input type="hidden" name="shop_id" value="">
-                <input type="hidden" name="user_id" value="{{Auth::id()}}">
+                <input type="hidden" name="id" value="{{$reservation->id}}">
 
                 <div class="container__form__info">
                     <div class="container__form__info__tr">

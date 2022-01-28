@@ -27,8 +27,6 @@ class ReservationController extends Controller
     {
         $reservatoin = Reservation::where("id",$id)->first();
         $date =  date("Y-m-d", strtotime($reservatoin->visited_on));
-
-
         $time = date("h:i:s", strtotime($reservatoin->visited_on));/*$timeをセレクトボックスに代入したい。中身は09:00:00 */
 
 
@@ -37,6 +35,16 @@ class ReservationController extends Controller
             "date" => $date,
             "time" => (string)$time,
         ]);
+    }
+
+    public function update(Request $request)
+    {
+        $data = [
+            "visited_on" =>$request->date." ".$request->time,
+            "number_of_people" => $request->number_of_people,
+        ];
+        Reservation::where("id",$request->id)->update($data);
+        return view("user.mypage");
     }
 
     public function destroy($id)

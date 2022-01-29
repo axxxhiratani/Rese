@@ -1,13 +1,13 @@
 <head>
-    <link rel="stylesheet" href="{{asset('/css/login.css')}}">
+    <link rel="stylesheet" href="{{asset('/css/login_owner.css')}}">
     <link rel="stylesheet" href="{{asset('/fontawesome-free-5.15.4-web/css/all.css')}}">
 </head>
 
 
-<x-layout>
+<x-layout_owner>
 <div class="container--login">
     <div class="container--login__title">
-        <p>Login</p>
+        <p>Owner Login</p>
     </div>
     <div class="container--login__form">
         <form action="/login" method="post">

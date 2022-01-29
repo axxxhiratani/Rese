@@ -9,12 +9,11 @@ class OwnerController extends Controller
     //
     public function createLogin()
     {
-
+        return view("owner.login");
     }
 
     public function storeLogin()
     {
-        return view("owner.login");
     }
     public function createRegister(LoginRequest $request)
     {

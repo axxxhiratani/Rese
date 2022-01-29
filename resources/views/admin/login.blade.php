@@ -7,7 +7,7 @@
 <x-layout>
 <div class="container--login">
     <div class="container--login__title">
-        <p>Login</p>
+        <p>Admin Login</p>
     </div>
     <div class="container--login__form">
         <form action="/login" method="post">

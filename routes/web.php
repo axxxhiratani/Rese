@@ -5,6 +5,7 @@ use App\Http\Controllers\UserController;
 use App\Http\Controllers\ShopController;
 use App\Http\Controllers\ReservationController;
 use App\Http\Controllers\EvaluationController;
+use App\Http\Controllers\OwnerController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -34,23 +35,16 @@ Route::post('/evaluation',[EvaluationController::class,"store"])->middleware(['a
 
 
 
-
-
-
-
-
-
-
 //owner
-Route::get('/owner/register', [OwnerController::class, 'createLogin'])
+Route::get('/owner/register', [OwnerController::class, 'create'])
                 ->middleware('guest');
-Route::post('/owner/register', [OwnerController::class, 'storeLogin'])
-                ->middleware('guest');
-
-Route::get('/owner/login', [OwnerController::class, 'createRegister'])
+Route::post('/owner/register', [OwnerController::class, 'store'])
                 ->middleware('guest');
 
-Route::post('/owner/login', [OwnerController::class, 'storeRegister'])
+Route::get('/owner/login', [OwnerController::class, 'createLogin'])
+                ->middleware('guest');
+
+Route::post('/owner/login', [OwnerController::class, 'storeLogin'])
                 ->middleware('guest');
 
 

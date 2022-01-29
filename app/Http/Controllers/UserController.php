@@ -28,12 +28,14 @@ class UserController extends Controller
         $reservations = User::where("id",$id)->with("reservations")->get();
 
         foreach($favorites[0]->favorites as $index => $favorite){
+            $favorites[0]->favorites[$index]["user_id"] = $favorite->user;
             $favorites[0]->favorites[$index]["shop_id"] = $favorite->shop;
             $favorites[0]->favorites[$index]["shop_id"]["genre_id"] = $favorite->shop->genre;
             $favorites[0]->favorites[$index]["shop_id"]["area_id"] = $favorite->shop->area;
         }
 
         foreach($reservations[0]->reservations as $index => $reservation){
+            $reservations[0]->reservations[$index]["user_id"] = $reservation->user;
             $reservations[0]->reservations[$index]["shop_id"] = $reservation->shop;
         }
 

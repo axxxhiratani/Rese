@@ -6,6 +6,13 @@
 
 <x-layout>
     <div class="container--mypage" id="app">
+        <div class="container--mypage__img-qr">
+            <p class="container--mypage__img-qr--image"></p>
+
+            <a @click="closeQr()" class="container--mypage__img-qr--close">
+                <i class="far fa-times-circle"></i>
+            </a>
+        </div>
         <div class="container__profile">
             <div class="container__profile__name">
                 <p>@{{name}}さん</p>
@@ -21,7 +28,7 @@
                 <div class="container__reservation__list__info">
                     <i class="fas fa-clock"></i>
                     <p class="container__reservation__list__info--title">予約@{{index+1}}</p>
-                    <i class="far fa-window-close container__reservation__list__info--cancel" @click="cancelReservation(reservation.id)"></i>
+                    <i class="far fa-times-circle container__reservation__list__info--cancel" @click="cancelReservation(reservation.id)"></i>
                 </div>
                 <div class="container__reservation__list__table">
 
@@ -55,6 +62,9 @@
                     </a>
                     <a @click="evaluation(reservation.id)" class="container__reservation__list__edit--link">
                         評価する
+                    </a>
+                    <a @click="showQr(reservation)" class="container__reservation__list__edit--link">
+                        QR表示
                     </a>
                 </div>
             </div>
@@ -99,7 +109,8 @@
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/fetch-jsonp@1.1.3/build/fetch-jsonp.min.js"></script>
 <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
-<script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.qrcode/1.0/jquery.qrcode.min.js"></script> <script>
     const vm = new Vue({
         el: '#app',
         data:{
@@ -187,6 +198,19 @@
                 console.log(data.shop_id.id);
                 this.getUser();
                 alert("お気に入り解除しました。")
+            },
+            showQr:function(data){
+                console.log(data);
+                var qrtext = `予約情報\n${data.user_id.name}様\n店名:${data.shop_id.name}\nお時間:${data.visited_on}\n人数:${data.number_of_people}}`;
+                console.log(qrtext);
+                var utf8qrtext = unescape(encodeURIComponent(qrtext));
+                $(".container--mypage__img-qr").find("p").qrcode({text:utf8qrtext});
+                $(".container--mypage__img-qr").css("display","block");
+            },
+            closeQr:function(){
+                console.log("log");
+                $(".container--mypage__img-qr").find("p").html("");
+                $(".container--mypage__img-qr").css("display","none");
             },
             update:function(id){
                 window.location.href = `/update/${id}`;

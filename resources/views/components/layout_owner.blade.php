@@ -16,12 +16,12 @@
             <ul>
                 @if (Auth::id())
                     <li><a href="/">Home</a></li>
-                    <li><a href="/logout">Logout</a></li>
-                    <li><a href="/mypage">Mypage</a></li>
+                    <li><a href="/owner/logout">Logout</a></li>
+                    <li><a href="/">Mypage</a></li>
                 @else
                     <li><a href="/">Home</a></li>
-                    <li><a href="/register">Registration</a></li>
-                    <li><a href="/login">Login</a></li>
+                    <li><a href="/">Registration</a></li>
+                    <li><a href="/">Login</a></li>
                 @endif
             </ul>
         </nav>

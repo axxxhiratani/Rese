@@ -31,21 +31,9 @@ Route::post('/evaluation',[EvaluationController::class,"store"])->middleware(['a
 
 
 
-
-
-
-
-//owner
-Route::get('/owner/register', [OwnerController::class, 'create'])
-                ->middleware('guest');
-Route::post('/owner/register', [OwnerController::class, 'store'])
-                ->middleware('guest');
-
-Route::get('/owner/login', [OwnerController::class, 'createLogin'])
-                ->middleware('guest');
-
-Route::post('/owner/login', [OwnerController::class, 'storeLogin'])
-                ->middleware('guest');
+Route::prefix('owner')->name('owner.')->group(function(){
+    require __DIR__.'/owner.php';
+});
 
 
 require __DIR__.'/auth.php';

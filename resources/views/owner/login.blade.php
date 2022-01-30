@@ -10,7 +10,7 @@
         <p>Owner Login</p>
     </div>
     <div class="container--login__form">
-        <form action="/login" method="post">
+        <form action="/owner/login" method="post">
             @csrf
             <div class="container--login__form__input">
                 <label for=""><i class="fas fa-envelope"></i></label>
@@ -33,6 +33,6 @@
         </form>
     </div>
 </div>
-</x-layout>
+</x-layout_owner>
 
 

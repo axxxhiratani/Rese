@@ -27,7 +27,8 @@
 
 
                 {{-- このセレクトボックスに$timeを代入したい --}}
-                <select name="time" class="container__form--select" value="{{$time}}">
+                <select name="time" class="container__form--select">
+                    <option value="{{$time}}" selected >{{substr($time,0,5)}}</option>
                     @for ($i = 0; $i < 24; $i++)
                         @if ($i <= 9)
                             <option value="0{{$i}}:00:00">
@@ -44,7 +45,9 @@
                 @error('time')
                     <p class="container__form--error">{{$message}}</p>
                 @enderror
-                <select name="number_of_people" class="container__form--select" value="{{$reservation->number_of_people}}" test="test">
+                <select name="number_of_people" class="container__form--select">
+                    <option value="{{$reservation->number_of_people}}" selected >{{$reservation->number_of_people}}人</option>
+
                     @for ($i = 1; $i < 10; $i++)
                     <option value="{{$i}}">{{$i}}人</option>
                     @endfor

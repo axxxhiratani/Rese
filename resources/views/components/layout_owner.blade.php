@@ -2,7 +2,7 @@
 <html lang="ja">
 <head>
     <meta charset="UTF-8">
-    <link rel="stylesheet" href="{{asset('/css/menu_owner.css')}}">
+    <link rel="stylesheet" href="{{asset('/css/owner/menu.css')}}">
     <link rel="stylesheet" href="{{asset('/css/reset.css')}}">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
@@ -11,13 +11,13 @@
 <body>
 
     <div class="container">
-
         <nav class="nav" id="nav">
             <ul>
-                @if (Auth::id())
-                    <li><a href="/">Home</a></li>
+                @if (Auth::guard('owner')->id())
+                    <li><a href="/owner/index">Shop List</a></li>
                     <li><a href="/owner/logout">Logout</a></li>
-                    <li><a href="/">Mypage</a></li>
+                    <li><a href="/owner/shop">Add Shop</a></li>
+                    <li><a href="/owner/reservation">Reservation List</a></li>
                 @else
                     <li><a href="/">Home</a></li>
                     <li><a href="/">Registration</a></li>

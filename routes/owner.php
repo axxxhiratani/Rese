@@ -9,6 +9,23 @@ use App\Http\Controllers\Owner\Auth\PasswordResetLinkController;
 use App\Http\Controllers\Owner\Auth\RegisteredUserController;
 use App\Http\Controllers\Owner\Auth\VerifyEmailController;
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\OwnerController;
+
+Route::get('/index',function(){
+    return view("owner.owner_page");
+});
+Route::get('/reservation',function(){
+    return view("owner.reservation");
+});
+
+Route::get('/shop',[OwnerController::class, 'createShop']);
+Route::post('/shop',[OwnerController::class, 'storeShop']);
+Route::get('/detail/{id?}',[OwnerController::class, 'edit']);
+Route::post('/detail',[OwnerController::class, 'updateShop']);
+Route::post('/delete',[OwnerController::class, 'deleteShop']);
+
+
+
 
 Route::get('/register', [RegisteredUserController::class, 'create'])
                 ->middleware('guest')

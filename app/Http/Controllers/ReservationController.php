@@ -7,8 +7,6 @@ use App\Models\Reservation;
 use Illuminate\Support\Facades\Auth;
 use App\Http\Requests\ReservationRequest;
 
-
-
 class ReservationController extends Controller
 {
     //

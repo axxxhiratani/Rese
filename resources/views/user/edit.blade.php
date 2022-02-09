@@ -110,7 +110,7 @@
         //     this.number = JSON.parse(localStorage.getItem("number")) || "1";
         // },
         filters:{
-            changeTime:async function(date){
+            changeTime:function(date){
                 console.log(date);
                 const dt = Date.parse(date);
                 var date = new Date(dt);

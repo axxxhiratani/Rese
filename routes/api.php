@@ -8,6 +8,7 @@ use App\Http\Controllers\AreaController;
 use App\Http\Controllers\FavoriteController;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\ReservationController;
+use App\Http\Controllers\OwnerController;
 /*
 |--------------------------------------------------------------------------
 | API Routes
@@ -26,6 +27,7 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
 Route::prefix("v1/shop")->group(function(){
     Route::get("/",[ShopController::class,"showAll"]);
     Route::get("/search",[ShopController::class,"search"]);
+    Route::get("/owner/{id?}",[ShopController::class,"showReservation"]);
 });
 
 Route::prefix("v1/genre")->group(function(){
@@ -38,6 +40,12 @@ Route::prefix("v1/area")->group(function(){
 
 Route::prefix("v1/user")->group(function(){
     Route::get("/{id?}",[UserController::class,"show"]);
+});
+
+Route::prefix("v1/owner")->group(function(){
+    Route::get("/{id?}",[OwnerController::class,"showOwner"]);
+    Route::get("/shop/{id?}",[OwnerController::class,"showShop"]);
+    Route::get("/reservation/{id?}",[OwnerController::class,"showReservation"]);
 });
 
 Route::prefix("v1/reservation")->group(function(){

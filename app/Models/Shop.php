@@ -7,6 +7,7 @@ use Illuminate\Database\Eloquent\Model;
 use App\Models\Genre;
 use App\Models\Area;
 use App\Models\Evaluation;
+use App\Models\Reservation;
 
 class Shop extends Model
 {
@@ -14,7 +15,8 @@ class Shop extends Model
 
     protected $fillable = [
         "owner_id",
-        "genere_id",
+        "genre_id",
+        "area_id",
         "name",
         "area",
         "overview",
@@ -34,5 +36,8 @@ class Shop extends Model
     public function evaluations()
     {
         return $this->hasMany(Evaluation::class);
+    }
+    public function reservations(){
+        return $this->hasMany(Reservation::class);
     }
 }

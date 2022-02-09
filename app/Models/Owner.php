@@ -8,9 +8,9 @@ use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
 use Laravel\Sanctum\HasApiTokens;
+use App\Models\Shop;
 
-
-class Owner extends Model
+class Owner extends Authenticatable
 {
 
     use HasApiTokens, HasFactory, Notifiable;
@@ -45,6 +45,15 @@ class Owner extends Model
         'email_verified_at' => 'datetime',
     ];
 
+    public function shops()
+    {
+        return $this->hasMany(Shop::class);
+    }
+
+    public function reservations()
+    {
+
+    }
 
 
 }

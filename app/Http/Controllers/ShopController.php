@@ -72,6 +72,20 @@ class ShopController extends Controller
 
         return response()->json([
             "shops" => $shops
-        ]);
+        ],200);
+    }
+
+    public function showReservation($id)
+    {
+        $reservations = Shop::where("id",$id)->with("reservations")->get();
+
+        foreach($reservations[0]->reservations as $index => $reservation){
+            $reservations[0]->reservations[$index]["user_id"] = $reservation->user;
+            $reservations[0]->reservations[$index]["shop_id"] = $reservation->shop;
+        }
+
+        return response()->json([
+            "reservations" => $reservations
+        ],200);
     }
 }

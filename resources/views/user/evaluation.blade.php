@@ -6,7 +6,7 @@
     <div class="container--reservation" id="app">
         <div class="container__detail">
             <a href="/mypage" class="container__detail--back"><</a>
-            <p class="container__detail--name"></p>
+            <p class="container__detail--name">{{$reservation->shop->name}}</p>
             <img class="container__detail--img" src="{{$reservation->shop->image}}" alt="">
             <div class="container__detail--info">
                 <p>#{{$reservation->shop->area->name}}</p>

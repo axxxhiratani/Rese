@@ -14,6 +14,7 @@ class ShopsTableSeeder extends Seeder
      */
     public function run()
     {
+
         //
         Shop::create([
         "owner_id" => 4,

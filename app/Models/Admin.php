@@ -8,9 +8,8 @@ use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
 use Laravel\Sanctum\HasApiTokens;
-use App\Models\Shop;
 
-class Owner extends Authenticatable
+class Admin extends Authenticatable
 {
     use HasApiTokens, HasFactory, Notifiable;
     /**
@@ -42,16 +41,5 @@ class Owner extends Authenticatable
     protected $casts = [
         'email_verified_at' => 'datetime',
     ];
-
-    public function shops()
-    {
-        return $this->hasMany(Shop::class);
-    }
-
-    public function reservations()
-    {
-
-    }
-
 
 }

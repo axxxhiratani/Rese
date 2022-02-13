@@ -1,16 +1,16 @@
 <head>
-    <link rel="stylesheet" href="{{asset('/css/login.css')}}">
+    <link rel="stylesheet" href="{{asset('/css/admin/login.css')}}">
     <link rel="stylesheet" href="{{asset('/fontawesome-free-5.15.4-web/css/all.css')}}">
 </head>
 
 
-<x-layout>
+<x-layout_admin>
 <div class="container--login">
     <div class="container--login__title">
         <p>Admin Login</p>
     </div>
     <div class="container--login__form">
-        <form action="/login" method="post">
+        <form action="/admin/login" method="post">
             @csrf
             <div class="container--login__form__input">
                 <label for=""><i class="fas fa-envelope"></i></label>
@@ -33,6 +33,6 @@
         </form>
     </div>
 </div>
-</x-layout>
+</x-layout_admin>
 
 

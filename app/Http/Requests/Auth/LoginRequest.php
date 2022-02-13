@@ -57,7 +57,15 @@ class LoginRequest extends FormRequest
         $this->ensureIsNotRateLimited();
 
         //追記
-        $this->is('owner/*') ? $guard = 'owner' : $guard = 'web';
+        // $this->is('owner/*') ? $guard = 'owner' : $guard = 'web';
+
+        if($this->is('owner/*')){
+            $guard = 'owner';
+        }else if($this->is('admin/*')){
+            $guard = 'admin';
+        }else{
+            $guard = 'web';
+        }
 
         if (! Auth::guard($guard)->attempt($this->only('email', 'password'), $this->boolean('remember'))) {
             RateLimiter::hit($this->throttleKey());

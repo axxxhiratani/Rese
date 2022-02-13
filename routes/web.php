@@ -34,6 +34,9 @@ Route::post('/evaluation',[EvaluationController::class,"store"])->middleware(['a
 Route::prefix('owner')->name('owner.')->group(function(){
     require __DIR__.'/owner.php';
 });
+Route::prefix('admin')->name('admin.')->group(function(){
+    require __DIR__.'/admin.php';
+});
 
 
 require __DIR__.'/auth.php';

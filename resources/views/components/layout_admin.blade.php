@@ -14,14 +14,12 @@
         <nav class="nav" id="nav">
             <ul>
                 @if (Auth::guard('admin')->id())
-                    <li><a href="/owner/index">Shop List</a></li>
+                    <li><a href="/admin/index">Home</a></li>
                     <li><a href="/admin/logout">Logout</a></li>
-                    <li><a href="/owner/shop">Add Shop</a></li>
-                    <li><a href="/owner/reservation">Reservation List</a></li>
+                    <li><a href="/owner/register">Owner Register</a></li>
                 @else
-                    <li><a href="/">Home</a></li>
-                    <li><a href="/">Registration</a></li>
-                    <li><a href="/">Login</a></li>
+                    <li><a href="/admin/index">Home</a></li>
+                    <li><a href="/admin/login">Login</a></li>
                 @endif
             </ul>
         </nav>

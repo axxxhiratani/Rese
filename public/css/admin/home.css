@@ -1,0 +1,42 @@
+.container--reservation{
+    width: 90%;
+    margin: 0 auto;
+}
+
+.container--title {
+    display: inline-block;
+    font-size: 30px;
+    font-weight: bold;
+    margin: 50px 0;
+}
+
+.container__list{
+    width: 100%;
+    margin: 10px auto;
+    border-radius: 5px;
+}
+.container__list__tr{
+    width: 100%;
+    background: #f0f8ff;
+    border-bottom: 1.5px solid #e6e6fa;
+}
+.container__list__tr:first-child{
+    background: #00bfff;
+}
+.container__list__tr--th{
+    font-size: 25px;
+    font-weight: bold;
+    display: inline-block;
+    width: 30%;
+    height: 30px;
+    text-align: center;
+    margin: 20px 0;
+}
+
+.container__list__tr--td {
+    display: inline-block;
+    width: 30%;
+    height: 30px;
+    text-align: center;
+    margin: 15px 0;
+}

@@ -9,10 +9,9 @@ use App\Http\Controllers\Admin\Auth\PasswordResetLinkController;
 use App\Http\Controllers\Admin\Auth\RegisteredUserController;
 use App\Http\Controllers\Admin\Auth\VerifyEmailController;
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\AdminContorller;
 
-Route::get('/index',function(){
-    return view("admin.mypage");
-});
+Route::get('/index',[AdminContorller::class,'index']);
 
 Route::get('/register', [RegisteredUserController::class, 'create'])
                 ->middleware('guest')

@@ -93,7 +93,7 @@ a {
 .title{
     display: inline-block;
     width: 100px;
-    color: #0000ff;
+    color: red;
     margin-top: 30px;
     margin-left: 65px;
     font-size: 20px;

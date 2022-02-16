@@ -33,6 +33,7 @@
                 @{{reservation.shop.name}}
             </p>
             <p class="container__list__tr--td">
+                {{-- @{{reservation.user.name}} --}}
                 @{{reservation.user.name}}
             </p>
             <p class="container__list__tr--td">

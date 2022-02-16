@@ -54,16 +54,17 @@
 }
 .container__reservation__list__info{
     margin: 5px 0 0 20px;
+    white-space: nowrap;
 }
 .container__reservation__list__info--cancel{
-    display: inline-block;
-    margin-left: 70%;
+    display: block;
+    font-size: 20px;
 }
 .container__reservation__list{
     color: #fff;
     display: inline-block;
     background: #4169e1;
-    width: 50%;
+    width: 85%;
     margin:10px 0 50px 10px;
     padding: 10px 10px;
     border-radius: 5px;
@@ -74,6 +75,7 @@
     font-weight: bold;
     margin: 10px 0;
     margin-left: 10px;
+    width: 85%;
 }
 
 .container__reservation__list__table{
@@ -82,33 +84,40 @@
 
 .container__reservation__list__table__tr{
     margin: 20px 0;
+    white-space: nowrap;
 }
 
 .container__reservation__list__table__tr--th{
     display: inline-block;
     width: 80px;
     color: #fff;
+    font-size: 20px;
 }
 
 .container__reservation__list__table__tr--td{
     display: inline-block;
     width: 100px;
     color: #fff;
+    margin-left: 70px;
+    font-size: 20px;
 }
 
 .container__reservation__list__edit{
+    width: 100%;
     margin: 40px 0;
     text-align: center;
+    display: flex;
+    justify-content: space-around;
 }
 .container__reservation__list__edit--link{
     border: #fff 1px solid;
     color: #fff;
     cursor: pointer;
-    padding: 10px 20px;
-    margin: 10px 20px;
     border-radius: 5px;
-    width: 5%;
+    width: 30%;
+    padding: 15px 0;
     font-size: 10px;
+    white-space: nowrap;
 }
 .container__reservation__list__edit--link:hover{
     background: #fff;
@@ -175,10 +184,12 @@
     color: #fff;
     background: #0000ff;
     border-radius: 5px;
-    padding: 20px 20px;
-    cursor: pointer;
-    width: 30%;
+    padding: 25px 15px;
+    font-size: 10px;
+    font-weight: bold;
     text-align: center;
+    white-space: nowrap;
+    cursor: pointer;
 }
 
 .container__favorite__flex__shop--buttom--favorite {

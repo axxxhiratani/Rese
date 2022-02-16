@@ -1,5 +1,5 @@
 <head>
-    <link rel="stylesheet" href="{{asset('/css/reservation.css')}}">
+    <link rel="stylesheet" href="{{asset('/css/edit.css')}}">
 </head>
 
 <x-layout>
@@ -25,8 +25,6 @@
                     <p class="container__form--error">{{$message}}</p>
                 @enderror
 
-
-                {{-- このセレクトボックスに$timeを代入したい --}}
                 <select name="time" class="container__form--select">
                     <option value="{{$time}}" selected >{{substr($time,0,5)}}</option>
                     @for ($i = 0; $i < 24; $i++)
@@ -54,24 +52,6 @@
                 </select>
                 <input type="hidden" name="id" value="{{$reservation->id}}">
 
-                <div class="container__form__info">
-                    <div class="container__form__info__tr">
-                        <p class="container__form__info__tr--th">Shop</p>
-                        <p class="container__form__info__tr--td"></p>
-                    </div>
-                    <div class="container__form__info__tr">
-                        <p class="container__form__info__tr--th">Date</p>
-                        <p class="container__form__info__tr--td">@{{date}}</p>
-                    </div>
-                    <div class="container__form__info__tr">
-                        <p class="container__form__info__tr--th">Time</p>
-                        <p class="container__form__info__tr--td">@{{time | changeTime}}</p>
-                    </div>
-                    <div class="container__form__info__tr">
-                        <p class="container__form__info__tr--th">Number</p>
-                        <p class="container__form__info__tr--td">@{{number}}人</p>
-                    </div>
-                </div>
                 <button type="submit" class="container__form--button">予約変更する</button>
             </form>
         </div>

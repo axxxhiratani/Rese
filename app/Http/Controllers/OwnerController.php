@@ -44,7 +44,7 @@ class OwnerController extends Controller
             }
         }
         return response()->json([
-            "reservations" => $reservations
+            "reservations" => $target
         ]);
     }
 

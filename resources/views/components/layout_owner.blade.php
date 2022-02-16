@@ -20,7 +20,6 @@
                     <li><a href="/owner/reservation">Reservation List</a></li>
                 @else
                     <li><a href="/">Home</a></li>
-                    <li><a href="/">Registration</a></li>
                     <li><a href="/">Login</a></li>
                 @endif
             </ul>

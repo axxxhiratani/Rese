@@ -18,6 +18,7 @@
         </div>
         <div class="container__form">
             <p class="container__form--name">予約変更</p>
+
             <form action="/update" method="post">
                 @csrf
                 <input type="date" name="date" class="container__form--date" value="{{$date}}">

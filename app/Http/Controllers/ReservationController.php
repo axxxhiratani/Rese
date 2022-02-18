@@ -42,7 +42,7 @@ class ReservationController extends Controller
             "number_of_people" => $request->number_of_people,
         ];
         Reservation::where("id",$request->id)->update($data);
-        return view("user.mypage");
+        return redirect("/mypage");
     }
 
     public function destroy($id)

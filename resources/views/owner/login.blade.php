@@ -1,5 +1,5 @@
 <head>
-    <link rel="stylesheet" href="{{asset('/css/owner/login_owner.css')}}">
+    <link rel="stylesheet" href="{{asset('/css/owner/login.css')}}">
     <link rel="stylesheet" href="{{asset('/fontawesome-free-5.15.4-web/css/all.css')}}">
 </head>
 

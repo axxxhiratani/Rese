@@ -20,7 +20,9 @@
                     <li><a href="/owner/reservation">Reservation List</a></li>
                 @else
                     <li><a href="/">Home</a></li>
-                    <li><a href="/">Login</a></li>
+                    <li><a href="/owner/login">Login</a></li>
+                    <li><a href="/login">UserPage</a></li>
+                    <li><a href="/admin/login">AdminPage</a></li>
                 @endif
             </ul>
         </nav>

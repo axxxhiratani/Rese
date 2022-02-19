@@ -22,6 +22,8 @@
                     <li><a href="/">Home</a></li>
                     <li><a href="/register">Registration</a></li>
                     <li><a href="/login">Login</a></li>
+                    <li><a href="/owner/login">OwnerPage</a></li>
+                    <li><a href="/admin/login">AdminPage</a></li>
                 @endif
             </ul>
         </nav>

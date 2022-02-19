@@ -18,8 +18,10 @@
                     <li><a href="/admin/logout">Logout</a></li>
                     <li><a href="/owner/register">Owner Register</a></li>
                 @else
-                    <li><a href="/admin/index">Home</a></li>
+                    <li><a href="/">Home</a></li>
                     <li><a href="/admin/login">Login</a></li>
+                    <li><a href="/login">UserPage</a></li>
+                    <li><a href="/owner/login">OwnerPage</a></li>
                 @endif
             </ul>
         </nav>

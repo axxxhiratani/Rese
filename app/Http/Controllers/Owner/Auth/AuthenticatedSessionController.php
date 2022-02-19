@@ -35,7 +35,6 @@ class AuthenticatedSessionController extends Controller
         return redirect("/owner/index");
     }
 
-
     /**
      * Destroy an authenticated session.
      *

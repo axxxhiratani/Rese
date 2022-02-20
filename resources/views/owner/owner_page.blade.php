@@ -3,7 +3,6 @@
     <link rel="stylesheet" href="{{asset('/fontawesome-free-5.15.4-web/css/all.css')}}">
 </head>
 
-
 <x-layout_owner>
 
     <div class="container" id="app">
@@ -31,7 +30,7 @@
                     <a @click="detail(shop.id)" class="container__list__shop--buttom--detail">店舗情報の変更</a>
                 </div>
             </div>
-            <div v-show="shops">
+            <div v-if="message">
                 <p>
                     店舗情報がありません。
                 </p>
@@ -65,6 +64,7 @@
             shops:[],
             links:[],
             user_id:{{Auth::guard('owner')->id()}},
+            message:false,
         },
         watch:{
         },
@@ -75,7 +75,6 @@
                 await axios.get(url)
                 .then(function (response) {
                 // handle success(axiosの処理が成功した場合に処理させたいことを記述)
-                    console.log(response.data.owner[0]);
                     vm.owner = response.data.owner[0];
                 })
                 .catch(function (error) {
@@ -91,7 +90,9 @@
                 await axios.get(url)
                 .then(function (response) {
                 // handle success(axiosの処理が成功した場合に処理させたいことを記述)
-                    console.log(response.data.shops.links);
+                    if(response.data.shops.data.length == 0){
+                        vm.message = true;
+                    }
                     vm.shops = response.data.shops.data;
                     // vm.links = response.data.shops.links;
                     vm.links = response.data.shops.links;

@@ -24,7 +24,7 @@ Route::get("/thanks",[UserController::class,"thanks"]);
 Route::get("/mypage",[UserController::class,"mypage"])->middleware(['auth']);
 
 Route::get('/update/{id?}',[ReservationController::class,"show"])->middleware(['auth']);
-Route::post('/update',[ReservationController::class,"update"])->middleware(['auth']);
+Route::post('/change',[ReservationController::class,"update"])->middleware(['auth']);
 
 Route::get('/evaluation/{id?}',[EvaluationController::class,"show"])->middleware(['auth']);
 Route::post('/evaluation',[EvaluationController::class,"store"])->middleware(['auth']);

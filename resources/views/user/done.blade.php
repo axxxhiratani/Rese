@@ -3,10 +3,10 @@
 </head>
 
 <x-layout>
-<div class="container--done">
-    <p class="container--done--message">ご予約ありがとうございます</p>
-    <a href="/" class="container--done--link">戻る</a>
-</div>
+    <div class="container--done">
+        <p class="container--done--message">ご予約ありがとうございます</p>
+        <a href="/" class="container--done--link">戻る</a>
+    </div>
 </x-layout>
 
 <script src="https://cdn.jsdelivr.net/npm/vue@2/dist/vue.js"></script>

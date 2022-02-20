@@ -46,32 +46,5 @@
                 <button type="submit" class="container__form--button">送信する</button>
             </form>
         </div>
-
-
-
     </div>
 </x-layout>
-
-<script src="https://cdn.jsdelivr.net/npm/vue@2/dist/vue.js"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
-<script src="https://cdn.jsdelivr.net/npm/fetch-jsonp@1.1.3/build/fetch-jsonp.min.js"></script>
-<script src="https://unpkg.com/axios/dist/axios.min.js"></script>
-<script>
-    const vm = new Vue({
-        el: '#app',
-        data:{
-            date:"",
-            time:"",
-            number:"",
-        },
-        filters:{
-            changeTime:async function(date){
-                console.log(date);
-                const dt = Date.parse(date);
-                var date = new Date(dt);
-                console.log(`${date.getHours()}:${date.getMinutes()}`);
-                return `${date.getHours()}:${date.getMinutes()}`;
-            },
-        },
-    })
-</script>

@@ -14,12 +14,9 @@
                     <input type="hidden" value="{{$shop->id}}" name="id">
                     <button type="submit" class="container__form__header--delete">店舗の削除</button>
                 </form>
-
-
             </div>
             <form action="/owner/detail" method="post">
                 @csrf
-
                 <label for="" class="container__form--label">
                     <i class="fas fa-utensils">
                         ジャンル
@@ -31,47 +28,32 @@
                         <option value="{{$genre->id}}">{{$genre->name}}</option>
                     @endforeach
                 </select>
-
                 <label for="" class="container__form--label">
                     <i class="fas fa-map-marker-alt">
                         エリア
                     </i>
                 </label>
-
                 <select name="area_id" class="container__form--select">
                     <option value="{{$shop->area_id}}" selected >{{$shop->area->name}}</option>
                     @foreach ($areas as $area)
                         <option value="{{$area->id}}">{{$area->name}}</option>
                     @endforeach
                 </select>
-
                 <label for="" class="container__form--label">
                     <i class="fas fa-store">
                         店舗名
                     </i>
                 </label>
-
                 <input type="text" class="container__form--text" name="name" value="{{$shop->name}}">
                 <label for="" class="container__form--label">
                     <i class="far fa-eye">
                         説明
                     </i>
                 </label>
-
                 <textarea name="overview" id="" cols="50" rows="20" class="container__form--textarea">{{$shop->overview}}</textarea>
-
                 <input type="hidden" name="id" value="{{$shop->id}}">
-
                 <button type="submit" class="container__form--button">変更する</button>
             </form>
         </div>
-
-
-
     </div>
 </x-layout_owner>
-
-<script src="https://cdn.jsdelivr.net/npm/vue@2/dist/vue.js"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
-<script src="https://cdn.jsdelivr.net/npm/fetch-jsonp@1.1.3/build/fetch-jsonp.min.js"></script>
-<script src="https://unpkg.com/axios/dist/axios.min.js"></script>

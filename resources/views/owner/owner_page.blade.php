@@ -31,6 +31,11 @@
                     <a @click="detail(shop.id)" class="container__list__shop--buttom--detail">店舗情報の変更</a>
                 </div>
             </div>
+            <div v-show="shops">
+                <p>
+                    店舗情報がありません。
+                </p>
+            </div>
         </div>
         <div class="container__page">
             <div @click="movePage(link.url)" v-for="(link) in links" v-bind:class="activePage(link.active)">
@@ -49,105 +54,105 @@
 </x-layout>
 
 <script src="https://cdn.jsdelivr.net/npm/vue@2/dist/vue.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/fetch-jsonp@1.1.3/build/fetch-jsonp.min.js"></script>
-    <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
-    <script>
-        const vm = new Vue({
-            el: '#app',
-            data:{
-                owner:null,
-                shops:[],
-                links:[],
-                user_id:{{Auth::guard('owner')->id()}},
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/fetch-jsonp@1.1.3/build/fetch-jsonp.min.js"></script>
+<script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+<script>
+    const vm = new Vue({
+        el: '#app',
+        data:{
+            owner:null,
+            shops:[],
+            links:[],
+            user_id:{{Auth::guard('owner')->id()}},
+        },
+        watch:{
+        },
+
+        methods:{
+            getOwner:async function() {
+                let url = `/api/v1/owner/${this.user_id}`;
+                await axios.get(url)
+                .then(function (response) {
+                // handle success(axiosの処理が成功した場合に処理させたいことを記述)
+                    console.log(response.data.owner[0]);
+                    vm.owner = response.data.owner[0];
+                })
+                .catch(function (error) {
+                // handle error(axiosの処理にエラーが発生した場合に処理させたいことを記述)
+                    console.log(error);
+                })
+                .finally(function () {
+                // always executed(axiosの処理結果によらずいつも実行させたい処理を記述)
+                });
             },
-            watch:{
+            getShopAll:async function(){
+                let url = `/api/v1/owner/shop/${this.user_id}`;
+                await axios.get(url)
+                .then(function (response) {
+                // handle success(axiosの処理が成功した場合に処理させたいことを記述)
+                    console.log(response.data.shops.links);
+                    vm.shops = response.data.shops.data;
+                    // vm.links = response.data.shops.links;
+                    vm.links = response.data.shops.links;
+                })
+                .catch(function (error) {
+                // handle error(axiosの処理にエラーが発生した場合に処理させたいことを記述)
+                    console.log(error);
+                })
+                .finally(function () {
+                // always executed(axiosの処理結果によらずいつも実行させたい処理を記述)
+                });
             },
 
-            methods:{
-                getOwner:async function() {
-                    let url = `/api/v1/owner/${this.user_id}`;
-                    await axios.get(url)
-                    .then(function (response) {
-                    // handle success(axiosの処理が成功した場合に処理させたいことを記述)
-                        console.log(response.data.owner[0]);
-                        vm.owner = response.data.owner[0];
-                    })
-                    .catch(function (error) {
-                    // handle error(axiosの処理にエラーが発生した場合に処理させたいことを記述)
-                        console.log(error);
-                    })
-                    .finally(function () {
-                    // always executed(axiosの処理結果によらずいつも実行させたい処理を記述)
-                    });
-                },
-                getShopAll:async function(){
-                    let url = `/api/v1/owner/shop/${this.user_id}`;
-                    await axios.get(url)
-                    .then(function (response) {
-                    // handle success(axiosの処理が成功した場合に処理させたいことを記述)
-                        console.log(response.data.shops.links);
-                        vm.shops = response.data.shops.data;
-                        // vm.links = response.data.shops.links;
-                        vm.links = response.data.shops.links;
-                    })
-                    .catch(function (error) {
-                    // handle error(axiosの処理にエラーが発生した場合に処理させたいことを記述)
-                        console.log(error);
-                    })
-                    .finally(function () {
-                    // always executed(axiosの処理結果によらずいつも実行させたい処理を記述)
-                    });
-                },
 
 
 
 
+            movePage:async function(url){
 
-                movePage:async function(url){
-
-                    if(!url){
-                        return;
-                    }
-                    await axios.get(url)
-                    .then(function (response) {
-                    // handle success(axiosの処理が成功した場合に処理させたいことを記述)
-                        vm.shops = response.data.shops.data;
-                        vm.links = response.data.shops.links;
-                    })
-                    .catch(function (error) {
-                    // handle error(axiosの処理にエラーが発生した場合に処理させたいことを記述)
-                        console.log(error);
-                    })
-                    .finally(function () {
-                    // always executed(axiosの処理結果によらずいつも実行させたい処理を記述)
-                    });
-                },
-
-
-                activePage:function(data){
-                    let style = "";
-                    if(data){
-                        style = "container__page__link active";
-                    }else{
-                        style = "container__page__link";
-                    }
-                    return style;
-                },
-                activePageLink:function(data){
-                    let style = "";
-                    if(data){
-                        style = "active";
-                    }
-                    return style;
-                },
-                detail:function(id){
-                    window.location.href = `/owner/detail/${id}`;
+                if(!url){
+                    return;
                 }
+                await axios.get(url)
+                .then(function (response) {
+                // handle success(axiosの処理が成功した場合に処理させたいことを記述)
+                    vm.shops = response.data.shops.data;
+                    vm.links = response.data.shops.links;
+                })
+                .catch(function (error) {
+                // handle error(axiosの処理にエラーが発生した場合に処理させたいことを記述)
+                    console.log(error);
+                })
+                .finally(function () {
+                // always executed(axiosの処理結果によらずいつも実行させたい処理を記述)
+                });
             },
-            created:function(){
-                this.getOwner();
-                this.getShopAll();
+
+
+            activePage:function(data){
+                let style = "";
+                if(data){
+                    style = "container__page__link active";
+                }else{
+                    style = "container__page__link";
+                }
+                return style;
             },
-        })
-    </script>
+            activePageLink:function(data){
+                let style = "";
+                if(data){
+                    style = "active";
+                }
+                return style;
+            },
+            detail:function(id){
+                window.location.href = `/owner/detail/${id}`;
+            }
+        },
+        created:function(){
+            this.getOwner();
+            this.getShopAll();
+        },
+    })
+</script>

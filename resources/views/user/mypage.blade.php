@@ -8,7 +8,6 @@
     <div class="container--mypage" id="app">
         <div class="container--mypage__img-qr">
             <p class="container--mypage__img-qr--image"></p>
-
             <a @click="closeQr()" class="container--mypage__img-qr--close">
                 <i class="far fa-times-circle"></i>
             </a>
@@ -18,7 +17,6 @@
                 <p>@{{name}}さん</p>
             </div>
         </div>
-
         <div class="container__reservation">
             <div class="container__reservation--title">
                 <p>予約状況</p>
@@ -36,21 +34,18 @@
                         <p class="container__reservation__list__table__tr--th">Shop</p>
                         <p class="container__reservation__list__table__tr--td">@{{reservation.shop_id.name}}</p>
                     </div>
-
                     <div class="container__reservation__list__table__tr">
                         <p class="container__reservation__list__table__tr--th">Date</p>
                         <p class="container__reservation__list__table__tr--td">
                             @{{reservation.visited_on | changeDate}}
                         </p>
                     </div>
-
                     <div class="container__reservation__list__table__tr">
                         <p class="container__reservation__list__table__tr--th">Time</p>
                         <p class="container__reservation__list__table__tr--td">
                             @{{reservation.visited_on | changeTime}}
                         </p>
                     </div>
-
                     <div class="container__reservation__list__table__tr">
                         <p class="container__reservation__list__table__tr--th">Number</p>
                         <p class="container__reservation__list__table__tr--td">@{{reservation.number_of_people}}人</p>
@@ -69,14 +64,11 @@
                 </div>
             </div>
         </div>
-
         <div class="container__favorite">
-
             <div class="container__favorite--title">
                 <p>お気に入り店舗</p>
             </div>
             <p v-if="favorite_message">お気に入りがありません。</p>
-
             <div class="container__favorite__flex">
                 <div class="container__favorite__flex__shop" v-for="favorite in favorites">
                     <img class="container__favorite__flex__shop--img" v-bind:src="favorite.shop_id.image" alt="">

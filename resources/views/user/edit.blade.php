@@ -20,7 +20,6 @@
             <p class="container__form--name">予約変更</p>
             <form action="/change" method="post">
                 @csrf
-
                 <input type="date" name="date" class="container__form--date" value="{{$date}}">
                 @error('date')
                     <p class="container__form--error">{{$message}}</p>
@@ -39,19 +38,16 @@
                         @endif
                     @endfor
                 </select>
-
                 @error('time')
                     <p class="container__form--error">{{$message}}</p>
                 @enderror
                 <select name="number_of_people" class="container__form--select">
                     <option value="{{$reservation->number_of_people}}" selected >{{$reservation->number_of_people}}人</option>
-
                     @for ($i = 1; $i < 10; $i++)
                     <option value="{{$i}}">{{$i}}人</option>
                     @endfor
                 </select>
                 <input type="hidden" name="id" value="{{$reservation->id}}">
-
                 <button type="submit" class="container__form--button">予約変更する</button>
             </form>
         </div>

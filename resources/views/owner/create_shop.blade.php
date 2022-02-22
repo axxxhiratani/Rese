@@ -9,7 +9,6 @@
             <p class="container__form--name">店舗追加</p>
             <form action="/owner/shop" method="post">
                 @csrf
-
                 <label for="genre" class="container__form--label">
                     <i class="fas fa-utensils">
                         ジャンル
@@ -20,25 +19,21 @@
                         <option value="{{$genre->id}}">{{$genre->name}}</option>
                     @endforeach
                 </select>
-
                 <label for="area" class="container__form--label">
                     <i class="fas fa-map-marker-alt">
                         エリア
                     </i>
                 </label>
-
                 <select name="area_id" class="container__form--select" id="area">
                     @foreach ($areas as $area)
                         <option value="{{$area->id}}">{{$area->name}}</option>
                     @endforeach
                 </select>
-
                 <label for="name" class="container__form--label">
                     <i class="fas fa-store">
                         店舗名
                     </i>
                 </label>
-
                 <input type="text" class="container__form--text" name="name" value="{{old('name')}}" id="name">
                 @error('name')
                     <p class="container__form--error">
@@ -50,7 +45,6 @@
                         説明
                     </i>
                 </label>
-
                 <textarea name="overview" id="overview" cols="50" rows="20" class="container__form--textarea">
                 </textarea>
                 @error('overview')

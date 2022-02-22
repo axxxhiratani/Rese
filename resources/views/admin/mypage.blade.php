@@ -20,7 +20,6 @@
                 </p>
             </div>
             @foreach ($admins as $admin)
-
                 <div class="container__list__tr">
                     <p class="container__list__tr--td">
                         {{$admin->id}}

@@ -44,7 +44,6 @@
                 </select>
                 <input type="hidden" name="shop_id" value="{{$shop->id}}">
                 <input type="hidden" name="user_id" value="{{Auth::id()}}">
-
                 <div class="container__form__info">
                     <div class="container__form__info__tr">
                         <p class="container__form__info__tr--th">Shop</p>
@@ -86,7 +85,6 @@
                     <p class="container__evaluation__list--created">
                         投稿日:{{$evaluation->created_at}}
                     </p>
-
                 </div>
             @endforeach
     </div>

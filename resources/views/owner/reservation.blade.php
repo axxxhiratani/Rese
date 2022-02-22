@@ -61,7 +61,6 @@
         },
         watch:{
         },
-
         methods:{
             getShop:async function() {
                 let url = `/api/v1/owner/reservation/${this.user_id}`;

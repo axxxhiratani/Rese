@@ -4,7 +4,6 @@
 </head>
 
 <x-layout_owner>
-
     <div class="container" id="app">
         <div class="container__user">
             <p class="container__user--name">
@@ -68,7 +67,6 @@
         },
         watch:{
         },
-
         methods:{
             getOwner:async function() {
                 let url = `/api/v1/owner/${this.user_id}`;
@@ -123,8 +121,6 @@
                 // always executed(axiosの処理結果によらずいつも実行させたい処理を記述)
                 });
             },
-
-
             activePage:function(data){
                 let style = "";
                 if(data){

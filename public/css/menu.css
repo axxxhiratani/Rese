@@ -1,7 +1,10 @@
-body{
-    background: red;
+html{
+    height: 100%;
 }
-
+body{
+    height: 100%;
+    margin: 0;
+}
 a {
     text-decoration: none;
     color: blue
@@ -12,7 +15,7 @@ a {
     height: 100vh;
     width: 100%;
     left: -100%;
-    background: #eee;
+    background: #fff;
     transition: .7s;
     text-align: center;
 }
@@ -98,8 +101,8 @@ a {
     margin-left: 65px;
     font-size: 20px;
 }
-body{
-    background: #eee;
+
+.container {
+    background: #dcdcdc;
+    height: 100%;
 }
-
-

@@ -5,6 +5,7 @@
     border-radius: 5px;
     text-align: center;
     box-shadow: 5px 5px 5px #d3d3d3;
+    background: #fff;
 }
 .container--thanks--message{
     font-weight: bold;

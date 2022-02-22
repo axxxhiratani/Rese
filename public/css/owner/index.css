@@ -107,6 +107,9 @@
     border: #ffd700 1px solid;
     cursor: pointer;
 }
+.container__page__link > a{
+    color: #b0c4de;
+}
 .active{
     background: #ffd700;
     color: #fff;

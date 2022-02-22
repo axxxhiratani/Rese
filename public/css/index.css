@@ -1,6 +1,7 @@
-
-.container{
+.container__index {
     width: 100%;
+    background: #dcdcdc;
+    height: auto;
 }
 .container__search{
     border: #e6e6fa 1px solid;
@@ -91,6 +92,7 @@
     width: 50%;
     margin: 50px auto;
     text-align: center;
+    padding-bottom: 50px;
 }
 .container__page__link{
     display: inline-block;

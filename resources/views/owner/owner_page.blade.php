@@ -105,13 +105,7 @@
                 // always executed(axiosの処理結果によらずいつも実行させたい処理を記述)
                 });
             },
-
-
-
-
-
             movePage:async function(url){
-
                 if(!url){
                     return;
                 }

@@ -19,6 +19,7 @@ class OwnersTableSeeder extends Seeder
     {
         //
         Owner::create([
+            "id" => 4,
             "name" => "CoachTech",
             "email" => "coachtech@tech.co.jp",
             'email_verified_at' => now(),

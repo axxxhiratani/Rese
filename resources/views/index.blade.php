@@ -5,7 +5,7 @@
 
 
 <x-layout>
-    <div class="container" id="app">
+    <div class="container__index" id="app">
         <div class="container__search">
             <select v-model="area_id" class="container__search--input--genre">
                 <option v-bind:value="area.id" v-for="area in areas">

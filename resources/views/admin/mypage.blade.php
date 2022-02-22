@@ -2,6 +2,7 @@
     <link rel="stylesheet" href="{{asset('/css/admin/home.css')}}">
 </head>
 
+
 <x-layout_admin>
     <div class="container--reservation" id="app">
         <p class="container--title">

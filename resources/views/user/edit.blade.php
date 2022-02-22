@@ -18,14 +18,13 @@
         </div>
         <div class="container__form">
             <p class="container__form--name">予約変更</p>
-
             <form action="/change" method="post">
                 @csrf
+
                 <input type="date" name="date" class="container__form--date" value="{{$date}}">
                 @error('date')
                     <p class="container__form--error">{{$message}}</p>
                 @enderror
-
                 <select name="time" class="container__form--select">
                     <option value="{{$time}}" selected >{{substr($time,0,5)}}</option>
                     @for ($i = 0; $i < 24; $i++)
@@ -56,31 +55,5 @@
                 <button type="submit" class="container__form--button">予約変更する</button>
             </form>
         </div>
-
-
-
     </div>
 </x-layout>
-<script src="https://cdn.jsdelivr.net/npm/vue@2/dist/vue.js"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
-<script src="https://cdn.jsdelivr.net/npm/fetch-jsonp@1.1.3/build/fetch-jsonp.min.js"></script>
-<script src="https://unpkg.com/axios/dist/axios.min.js"></script>
-<script>
-    const vm = new Vue({
-        el: '#app',
-        data:{
-            date:"",
-            time:"",
-            number:"",
-        },
-        filters:{
-            changeTime:function(date){
-                console.log(date);
-                const dt = Date.parse(date);
-                var date = new Date(dt);
-                console.log(`${date.getHours()}:${date.getMinutes()}`);
-                return `${date.getHours()}:${date.getMinutes()}`;
-            },
-        },
-    })
-</script>

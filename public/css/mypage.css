@@ -30,6 +30,8 @@
     flex-wrap:wrap;
     margin: 0 auto;
     opacity: 1;
+    height: auto;
+    background: #dcdcdc;
 }
 
 .container__profile{

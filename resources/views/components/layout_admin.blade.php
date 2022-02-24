@@ -14,7 +14,7 @@
         <nav class="nav" id="nav">
             <ul>
                 @if (Auth::guard('admin')->id())
-                    <li><a href="/admin/index">UserList</a></li>
+                    <li><a href="/admin/index">OwnerList</a></li>
                     <li><a href="/admin/logout">Logout</a></li>
                     <li><a href="/owner/register">Owner Register</a></li>
                 @else

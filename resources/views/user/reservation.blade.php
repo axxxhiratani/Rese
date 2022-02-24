@@ -9,7 +9,7 @@
             <div class="container__detail">
                 <a href="/" class="container__detail--back"><</a>
                 <p class="container__detail--name">{{$shop->name}}</p>
-                <img class="container__detail--img" src="{{$shop->image}}" alt="">
+                <img class="container__detail--img" src="{{$shop->genre->image}}" alt="">
                 <div class="container__detail--info">
                     <p>#{{$shop->genre->name}}</p>
                     <p>#{{$shop->area->name}}</p>

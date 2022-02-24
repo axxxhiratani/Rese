@@ -71,7 +71,7 @@
             <p v-if="favorite_message">お気に入りがありません。</p>
             <div class="container__favorite__flex">
                 <div class="container__favorite__flex__shop" v-for="favorite in favorites">
-                    <img class="container__favorite__flex__shop--img" v-bind:src="favorite.shop_id.image" alt="">
+                    <img class="container__favorite__flex__shop--img" v-bind:src="favorite.shop.genre.image" alt="">
                     <p class="container__favorite__flex__shop--name">@{{favorite.shop_id.name}}</p>
                     <div class="container__favorite__flex__shop--info">
                         <p>
@@ -165,11 +165,10 @@
                 if(!window.confirm("お気に入りを解除しますか？")){
                     return;
                 }
-                console.log(data);
                 let url = "/api/v1/favorite";
                 await axios.delete(url,{
                     params:{
-                        user_id:data.user_id,
+                        user_id:data.user_id.id,
                         shop_id:data.shop_id.id
                     }
                 })
@@ -183,21 +182,16 @@
                 .finally(function () {
                 // always executed(axiosの処理結果によらずいつも実行させたい処理を記述)
                 });
-                console.log(data.user_id);
-                console.log(data.shop_id.id);
                 this.getUser();
                 alert("お気に入り解除しました。")
             },
             showQr:function(data){
-                console.log(data);
                 var qrtext = `予約情報\n${data.user_id.name}様\n店名:${data.shop_id.name}\nお時間:${data.visited_on}\n人数:${data.number_of_people}}`;
-                console.log(qrtext);
                 var utf8qrtext = unescape(encodeURIComponent(qrtext));
                 $(".container--mypage__img-qr").find("p").qrcode({text:utf8qrtext});
                 $(".container--mypage__img-qr").css("display","block");
             },
             closeQr:function(){
-                console.log("log");
                 $(".container--mypage__img-qr").find("p").html("");
                 $(".container--mypage__img-qr").css("display","none");
             },
@@ -215,13 +209,10 @@
                 return `${date.getFullYear()}/${date.getMonth()+1}/${date.getDate()}`;
             },
             changeTime:function(date){
-                console.log(date);
                 const dt = Date.parse(date);
                 var date = new Date(dt);
                 var hour = date.getHours();
                 var min = date.getMinutes();
-                console.log(( '00' + hour).slice(-2));
-                console.log(( '00' + min).slice(-2));
                 return ( '00' + hour).slice(-2) + ":"+( '00' + min).slice(-2);
             },
         },

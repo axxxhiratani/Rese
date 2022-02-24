@@ -59,26 +59,12 @@ class OwnerController extends Controller
     }
     public function storeShop(ShopRequest $request)
     {
-        $genre = $request->genre_id;
-        if($genre == 4){
-            $image = "https://coachtech-matter.s3-ap-northeast-1.amazonaws.com/image/sushi.jpg";
-        }else if($genre == 14){
-            $image = "https://coachtech-matter.s3-ap-northeast-1.amazonaws.com/image/yakiniku.jpg";
-        }else if($genre == 24){
-            $image = "https://coachtech-matter.s3-ap-northeast-1.amazonaws.com/image/izakaya.jpg";
-        }else if($genre == 34){
-            $image = "https://coachtech-matter.s3-ap-northeast-1.amazonaws.com/image/italian.jpg";
-        }else if($genre == 44){
-            $image = "https://coachtech-matter.s3-ap-northeast-1.amazonaws.com/image/ramen.jpg";
-        }
-
         Shop::create([
             "owner_id" => $request->owner_id,
             "genre_id" => $request->genre_id,
             "area_id" => $request->area_id,
             "name" => $request->name,
             "overview" => $request->overview,
-            "image" => $image
         ]);
         return view("owner.completion");
     }
@@ -97,24 +83,11 @@ class OwnerController extends Controller
 
     public function updateShop(ShopRequest $request)
     {
-        $genre = $request->genre_id;
-        if($genre == 4){
-            $image = "https://coachtech-matter.s3-ap-northeast-1.amazonaws.com/image/sushi.jpg";
-        }else if($genre == 14){
-            $image = "https://coachtech-matter.s3-ap-northeast-1.amazonaws.com/image/yakiniku.jpg";
-        }else if($genre == 24){
-            $image = "https://coachtech-matter.s3-ap-northeast-1.amazonaws.com/image/izakaya.jpg";
-        }else if($genre == 34){
-            $image = "https://coachtech-matter.s3-ap-northeast-1.amazonaws.com/image/italian.jpg";
-        }else if($genre == 44){
-            $image = "https://coachtech-matter.s3-ap-northeast-1.amazonaws.com/image/ramen.jpg";
-        }
         Shop::where("id",$request->id)->update([
             "genre_id" => $request->genre_id,
             "area_id" => $request->area_id,
             "name" => $request->name,
             "overview" => $request->overview,
-            "image" => $image
         ]);
         return redirect("/owner/index");
 

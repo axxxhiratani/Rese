@@ -45,8 +45,7 @@
                         説明
                     </i>
                 </label>
-                <textarea name="overview" id="overview" cols="50" rows="20" class="container__form--textarea">
-                </textarea>
+                <textarea name="overview" id="overview" cols="50" rows="20" class="container__form--textarea"></textarea>
                 @error('overview')
                     <p class="container__form--error">
                         {{$message}}

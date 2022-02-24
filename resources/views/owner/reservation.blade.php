@@ -42,6 +42,11 @@
                     @{{reservation.visited_on}}
                 </p>
             </div>
+            <div v-if="message_resevation" class="container__list__message">
+                <p>
+                    予約がありません。
+                </p>
+            </div>
         </div>
     </div>
 </x-layout_owner>
@@ -58,16 +63,19 @@
             reservations:[],
             links:[],
             user_id:{{Auth::guard('owner')->id()}},
+            message_resevation:false,
         },
         watch:{
         },
         methods:{
-            getShop:async function() {
+            getReservation:async function() {
                 let url = `/api/v1/owner/reservation/${this.user_id}`;
                 await axios.get(url)
                 .then(function (response) {
                 // handle success(axiosの処理が成功した場合に処理させたいことを記述)
-                    console.log(response.data.reservations);
+                    if(response.data.reservations.length == 0){
+                        vm.message_resevation = true;
+                    }
                     vm.reservations = response.data.reservations;
                 })
                 .catch(function (error) {
@@ -78,46 +86,9 @@
                 // always executed(axiosの処理結果によらずいつも実行させたい処理を記述)
                 });
             },
-            movePage:async function(url){
-                if(!url){
-                    return;
-                }
-                await axios.get(url)
-                .then(function (response) {
-                // handle success(axiosの処理が成功した場合に処理させたいことを記述)
-                    vm.shops = response.data.shops.data;
-                    vm.links = response.data.shops.links;
-                })
-                .catch(function (error) {
-                // handle error(axiosの処理にエラーが発生した場合に処理させたいことを記述)
-                    console.log(error);
-                })
-                .finally(function () {
-                // always executed(axiosの処理結果によらずいつも実行させたい処理を記述)
-                });
-            },
-            activePage:function(data){
-                let style = "";
-                if(data){
-                    style = "container__page__link active";
-                }else{
-                    style = "container__page__link";
-                }
-                return style;
-            },
-            activePageLink:function(data){
-                let style = "";
-                if(data){
-                    style = "active";
-                }
-                return style;
-            },
-            detail:function(id){
-                window.location.href = `/detail/${id}`;
-            }
         },
         created:function(){
-            this.getShop();
+            this.getReservation();
         },
     })
 </script>

@@ -11,7 +11,7 @@
 
 ## 2.ER 図
 
-![Chunk Database - ページ 1 (2)](https://user-images.githubusercontent.com/91531795/155331100-392f9c9e-15da-4a03-a1e2-faf3a1db64c3.png)
+![Chunk Database - ページ 1 (4)](https://user-images.githubusercontent.com/91531795/155494347-fe2d380b-aeff-4d12-8254-8793722277b0.png)
 
 ## 3.アプリの機能一覧
 

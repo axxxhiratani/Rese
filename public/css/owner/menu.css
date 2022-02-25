@@ -9,7 +9,7 @@ a {
 
 .nav {
     position: absolute;
-    height: 100vh;
+    height: 200%;
     width: 100%;
     left: -100%;
     background: #eee;

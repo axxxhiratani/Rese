@@ -160,7 +160,7 @@
                     vm.areas = response.data.areas;
                     vm.areas.unshift({
                                 id:"",
-                                name:"All Genre",
+                                name:"All Area",
                                 created_at: "",
                                 updated_at: ""
                             });

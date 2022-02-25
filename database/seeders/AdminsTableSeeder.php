@@ -22,7 +22,7 @@ class AdminsTableSeeder extends Seeder
             "name" => "root",
             "email" => "root@gmail.com",
             'email_verified_at' => now(),
-            "password" => Hash::make("root"),
+            "password" => Hash::make("1223334444"),
             "remember_token" => Str::random(10),
         ]);
     }

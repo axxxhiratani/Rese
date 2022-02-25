@@ -1,0 +1,85 @@
+.container--email {
+    width: 95%;
+    display: flex;
+    justify-content: space-around;
+    margin: 20px auto;
+}
+
+.container__form{
+    display: inline-block;
+    width: 50%;
+    background: #4169e1;
+    border-radius: 5px;
+    padding-top: 20px;
+}
+
+.container__form--name{
+    display: inline-block;
+    color: #fff;
+    font-size: 20px;
+    font-weight: bold;
+    margin: 20px 15px;
+}
+
+.container__form--select{
+    width: 90%;
+    border-radius: 5px;
+    margin-left: 15px;
+    margin-bottom: 5px;
+}
+
+.container__form--text {
+    width: 90%;
+    border-radius: 5px;
+    margin-left: 15px;
+    margin-bottom: 5px;
+}
+
+.container__form--textarea {
+    width: 90%;
+    border-radius: 5px;
+    margin-left: 15px;
+    margin-bottom: 5px;
+}
+
+.container__form--label{
+    display: inline-block;
+    margin: 10px 15px;
+}
+
+
+.container__form--button{
+    width: 100%;
+    color: #fff;
+    background: #0000ff;
+    margin: 0 auto;
+    padding: 10px 0;
+    border-bottom-left-radius: 5px;
+    border-bottom-right-radius: 5px;
+    border: none;
+    cursor: pointer;
+    margin-top: 20%;
+}
+.container__form--button:hover{
+    opacity: 0.5;
+}
+
+.container__form--error{
+    color: red;
+    font-size: 10px;
+    margin: 5px 10px;
+}
+
+.container__evaluation{
+    width: 80%;
+    margin: 20px auto;
+}
+.container__evaluation__list{
+    border: #000 1px solid;
+    border-radius: 5px;
+    margin: 20px 0;
+    padding: 20px 30px;
+    box-shadow: 5px 5px 5px #696969;
+}
+
+

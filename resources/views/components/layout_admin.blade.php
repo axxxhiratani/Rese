@@ -17,6 +17,7 @@
                     <li><a href="/admin/index">OwnerList</a></li>
                     <li><a href="/admin/logout">Logout</a></li>
                     <li><a href="/owner/register">Owner Register</a></li>
+                    <li><a href="/admin/email">Send Mail</a></li>
                 @else
                     <li><a href="/login">UserPage</a></li>
                     <li><a href="/owner/login">OwnerPage</a></li>

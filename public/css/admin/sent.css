@@ -1,0 +1,25 @@
+.container--thanks{
+    width: 40%;
+    margin: 50px auto;
+    border: 1px solid #d3d3d3;
+    border-radius: 5px;
+    text-align: center;
+    box-shadow: 5px 5px 5px #d3d3d3;
+}
+.container--thanks--message{
+    font-weight: bold;
+    display: inline-block;
+    margin: 50px 0 25px 0;
+    width: 100%;
+}
+.container--thanks--login{
+    display: inline-block;
+    color: #fff;
+    background: red;
+    padding: 10px 20px;
+    border-radius: 5px;
+    margin-bottom: 50px;
+}
+.container--thanks--login:hover {
+    opacity: 0.5;
+}

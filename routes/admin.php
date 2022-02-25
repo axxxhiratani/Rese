@@ -6,6 +6,10 @@ use App\Http\Controllers\AdminContorller;
 
 Route::get('/index',[AdminContorller::class,'index'])->middleware(['auth:admin']);
 
+Route::get('/email',[AdminContorller::class,'createEmail'])->middleware(['auth:admin']);
+Route::post('/email',[AdminContorller::class,'storeEmail'])->middleware(['auth:admin']);
+
+
 Route::get('/login', [AuthenticatedSessionController::class, 'create'])
                 ->middleware('guest')
                 ->name('login');

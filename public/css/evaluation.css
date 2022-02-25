@@ -1,4 +1,4 @@
-.container--reservation {
+.container--evaluation {
     width: 95%;
     display: flex;
     justify-content: space-around;
@@ -10,7 +10,6 @@
     width: 40%;
     margin-top: 50px;
 }
-
 
 .container__detail--back {
     display: inline-block;
@@ -122,7 +121,7 @@
     border-bottom-right-radius: 5px;
     border: none;
     cursor: pointer;
-    margin-top: 40%;
+    margin-top: 30%;
 }
 
 .container__form--button:hover {

@@ -24,7 +24,7 @@
     cursor: pointer;
 }
 .container--mypage{
-    width: 90%;
+    width: 100%;
     display: flex;
     justify-content:space-around;
     flex-wrap:wrap;
@@ -40,12 +40,12 @@
 }
 .container__profile__name{
     width: 50%;
-    margin-left: 50%;
+    margin-left: 52%;
     font-weight: bold;
     font-size: 25px;
 }
 .container__reservation{
-    width: 50%;
+    width: 40%;
     display: inline-block;
     margin-top: 50px;
 }
@@ -127,9 +127,8 @@
 }
 
 .container__favorite{
-    width: 50%;
+    width: 45%;
     display: inline-block;
-    width: 50%;
     margin-top: 50px;
 }
 .container__favorite--title{

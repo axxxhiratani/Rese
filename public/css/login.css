@@ -6,7 +6,6 @@
     margin: 100px auto;
     background: #fff;
 }
-
 .container--login__title {
     background: #0000ff;
     border-top-left-radius: 8px;
@@ -15,11 +14,9 @@
     padding: 10px 10px;
     color: #fff;
 }
-
 .container--login__form {
     padding: 5px 40px;
 }
-
 .container--login__form__input {
     width: 100%;
     margin: 10px 0;
@@ -28,7 +25,6 @@
 .container--login__form__input--icon{
     width: 3%;
 }
-
 .container--login__form__input--text {
     width: 97%;
     border-bottom: 1px solid #000;

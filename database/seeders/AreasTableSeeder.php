@@ -15,15 +15,12 @@ class AreasTableSeeder extends Seeder
     public function run()
     {
         Area::create([
-            "id" => 4,
             "name" => "東京都"
         ]);
         Area::create([
-            "id" => 14,
             "name" => "大阪府"
         ]);
         Area::create([
-            "id" => 24,
             "name" => "福岡県"
         ]);
     }

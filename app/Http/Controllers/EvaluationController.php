@@ -9,11 +9,9 @@ use App\Http\Requests\EvaluationRequest;
 
 class EvaluationController extends Controller
 {
-    //
     public function show($id)
     {
         $reservation = Reservation::where("id",$id)->first();
-        // return $reservation->user_id;
         return view("user.evaluation",[
             "reservation" => $reservation
         ]);

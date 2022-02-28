@@ -9,7 +9,6 @@ use App\Http\Requests\ReservationRequest;
 
 class ReservationController extends Controller
 {
-    //
     public function store(ReservationRequest $request)
     {
         Reservation::create([

@@ -14,7 +14,6 @@ class GenresTableSeeder extends Seeder
      */
     public function run()
     {
-        //
         Genre::create([
             "id" => 4,
             "name" => "寿司",

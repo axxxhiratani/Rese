@@ -9,8 +9,6 @@ use App\Models\Area;
 
 class ShopController extends Controller
 {
-    //
-
     public function index()
     {
         return view("index");
@@ -33,7 +31,6 @@ class ShopController extends Controller
     public function show($id)
     {
         $shop = Shop::where("id",$id)->with("evaluations")->first();
-        // return $shop->evaluations;
         $data = [
             "shop" => $shop
         ];

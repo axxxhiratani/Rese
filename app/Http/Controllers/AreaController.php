@@ -8,7 +8,6 @@ use App\Models\Area;
 
 class AreaController extends Controller
 {
-    //
     public function index()
     {
         $areas = Area::all();

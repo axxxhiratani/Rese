@@ -17,7 +17,6 @@ class OwnersTableSeeder extends Seeder
      */
     public function run()
     {
-        //
         Owner::create([
             "id" => 4,
             "name" => "CoachTech",

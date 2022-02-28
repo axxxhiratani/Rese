@@ -7,7 +7,6 @@ use App\Models\Favorite;
 
 class FavoriteController extends Controller
 {
-    //
     public function show($id){
         $favorites = Favorite::where("user_id",$id)->get();
         return response()->json([

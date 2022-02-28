@@ -16,7 +16,6 @@ class UserController extends Controller
         return view("thanks");
     }
 
-    //
     public function mypage()
     {
         return view("user.mypage");

@@ -56,9 +56,6 @@ class LoginRequest extends FormRequest
     {
         $this->ensureIsNotRateLimited();
 
-        //追記
-        // $this->is('owner/*') ? $guard = 'owner' : $guard = 'web';
-
         if($this->is('owner/*')){
             $guard = 'owner';
         }else if($this->is('admin/*')){

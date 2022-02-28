@@ -17,7 +17,6 @@ class AdminsTableSeeder extends Seeder
      */
     public function run()
     {
-        //
         Admin::create([
             "name" => "root",
             "email" => "root@gmail.com",

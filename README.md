@@ -5,13 +5,14 @@
 **Rese は、ある企業のグループ会社の飲食店予約サービスです。**
 
 -   アプリケーション URL  
-    http://limitless-wave-90876.herokuapp.com
+    http://akio-rese.net
 
 ![home](https://user-images.githubusercontent.com/91531795/155330915-e217bb0d-e7ac-43b3-8fce-f0d155077d3b.png)
 
 ## 2.ER 図
 
-![Chunk Database - ページ 1 (4)](https://user-images.githubusercontent.com/91531795/155494347-fe2d380b-aeff-4d12-8254-8793722277b0.png)
+![Chunk Database - ページ 1 (4)](https://user-images.githubusercontent.com/91531795/155963984-2aaa57e4-0beb-43aa-8a33-f5aab7ab6488.png)
+
 
 ## 3.アプリの機能一覧
 
@@ -26,6 +27,9 @@
 -   店舗情報追加・変更(オーナー)
 -   予約情報確認(オーナー)
 -   オーナー作成(管理者)
+-   ジャンルの作成とS3へ画像ファイルの保存(管理者)
+-   エリアの追加(管理者)
+-   利用者全員へメール送信(管理者)
 
 ## 4.環境構築
 

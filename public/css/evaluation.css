@@ -1,12 +1,14 @@
 .container--evaluation {
-    width: 95%;
+    width: 100%;
     display: flex;
     justify-content: space-around;
     margin: 0 auto;
+    height: auto;
+    background: #dcdcdc;
 }
 .container__detail {
     display: inline-block;
-    width: 40%;
+    width: 30%;
     margin-top: 50px;
 }
 .container__detail--back {
@@ -47,7 +49,6 @@
 .container__form {
     display: inline-block;
     width: 50%;
-    height: 450px;
     background: #4169e1;
     border-radius: 5px;
     padding-top: 20px;
@@ -59,12 +60,6 @@
     font-weight: bold;
     margin: 20px 15px;
 }
-.container__form--date {
-    width: 50%;
-    border-radius: 5px;
-    margin-left: 15px;
-    margin-bottom: 5px;
-}
 .container__form--select {
     width: 90%;
     border-radius: 5px;
@@ -74,27 +69,7 @@
 .container__form--textarea{
     width: 90%;
     border-radius: 5px;
-    margin: 10px 0 5px 15px;
-}
-.container__form__info {
-    width: 80%;
-    background: #b0c4de;
-    margin: 15px 0 0px 15px;
-    padding: 15px 10px;
-    border-radius: 5px;
-}
-.container__form__info__tr {
-    margin: 10px 0;
-}
-.container__form__info__tr--th {
-    display: inline-block;
-    width: 80px;
-    color: #fff;
-}
-.container__form__info__tr--td {
-    display: inline-block;
-    width: 100px;
-    color: #fff;
+    margin: 10px 0 0px 15px;
 }
 .container__form--button {
     width: 100%;

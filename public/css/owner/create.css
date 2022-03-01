@@ -3,19 +3,20 @@
     display: flex;
     justify-content: space-around;
     margin: 0 auto;
+    margin-bottom: 30px;
 }
 
 .container__form{
     display: inline-block;
     width: 50%;
-    background: #4169e1;
+    background: #fffacd;
     border-radius: 5px;
     padding-top: 20px;
 }
 
 .container__form--name{
     display: inline-block;
-    color: #fff;
+    color: #000;
     font-size: 20px;
     font-weight: bold;
     margin: 20px 15px;
@@ -50,8 +51,8 @@
 
 .container__form--button{
     width: 100%;
-    color: #fff;
-    background: #0000ff;
+    color: #000;
+    background: #ffff00;
     margin: 0 auto;
     padding: 10px 0;
     border-bottom-left-radius: 5px;

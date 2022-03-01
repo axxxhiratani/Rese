@@ -11,7 +11,7 @@
         <div class="container__list">
             <div class="container__list__tr">
                 <p class="container__list__tr--th">
-                    オーナーid
+                    #
                 </p>
                 <p class="container__list__tr--th">
                     name

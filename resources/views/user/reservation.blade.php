@@ -20,7 +20,7 @@
                 <p class="container__form--name">予約</p>
                 <form action="/done" method="post">
                     @csrf
-                    <input type="date" name="date" class="container__form--date" v-model="date">
+                    <input type="date" min="2021-03-01" name="date" class="container__form--date" v-model="date">
                     @error('date')
                         <p class="container__form--error">{{$message}}</p>
                     @enderror
@@ -106,7 +106,18 @@
         },
         watch:{
             date:function(){
-                localStorage.setItem("date",JSON.stringify(this.date));
+                var dtToday= new Date();
+                var month= dtToday.getMonth();
+                var day= dtToday.getDate();
+                var year= dtToday.getFullYear();
+                var today = new Date(year,month,day);
+                var selectday = Date.parse(this.date);
+                if( today.valueOf() > selectday.valueOf()){
+                    alert("前日は選択できません");
+                    this.date = JSON.parse(localStorage.getItem("date")) || "";
+                }else{
+                    localStorage.setItem("date",JSON.stringify(this.date));
+                }
                 },
             time:function(){
                 localStorage.setItem("time",JSON.stringify(this.time));

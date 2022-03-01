@@ -10,7 +10,7 @@
         <div class="container__list">
             <div class="container__list__tr">
                 <p class="container__list__tr--th">
-                    予約id
+                    #
                 </p>
                 <p class="container__list__tr--th">
                     店舗名

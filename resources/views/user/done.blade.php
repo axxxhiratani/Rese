@@ -3,7 +3,7 @@
 </head>
 
 <x-layout>
-    <div class="container--done">
+    <div class="container--done" id="app">
         <p class="container--done--message">ご予約ありがとうございます</p>
         <a href="/" class="container--done--link">戻る</a>
     </div>

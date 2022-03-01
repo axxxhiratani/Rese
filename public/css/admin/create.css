@@ -8,7 +8,7 @@
 .container__form{
     display: inline-block;
     width: 50%;
-    background: #4169e1;
+    background: #ff6347;
     border-radius: 5px;
     padding-top: 20px;
 }
@@ -51,7 +51,7 @@
 .container__form--button{
     width: 100%;
     color: #fff;
-    background: #0000ff;
+    background: #ff0000;
     margin: 0 auto;
     padding: 10px 0;
     border-bottom-left-radius: 5px;

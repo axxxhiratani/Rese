@@ -3,6 +3,8 @@
     display: flex;
     justify-content: space-around;
     margin: 0 auto;
+    height: auto;
+    background: #dcdcdc;
 }
 .container__detail {
     display: inline-block;

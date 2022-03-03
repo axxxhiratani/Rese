@@ -37,10 +37,11 @@
 -   ユーザー情報、ユーザー飲食店お気に入り一覧、ユーザー飲食店予約情報の取得
 -   飲食店一覧、飲食店詳細の取得
 -   飲食店お気に入り追加・削除
--   飲食店予約情報追加・削除・変更
+-   飲食店予約情報の追加・削除・変更
 -   飲食店をエリア、ジャンル、店名で検索する
 -   評価機能
 -   QR コード表示
+-   登録メールアドレスに予約のリマインドを送信
 -   店舗情報追加・変更(オーナー)
 -   予約情報確認(オーナー)
 -   オーナー作成(管理者)
@@ -52,28 +53,7 @@
 
 ```
 //①.envファイルの編集
-APP_PORT=8573
-
-DB_CONNECTION=mysql
-DB_HOST=mysql
-DB_PORT=3306
-DB_DATABASE=rese
-DB_USERNAME=sail
-DB_PASSWORD=password
-
-MAIL_MAILER=smtp
-MAIL_HOST=smtp.gmail.com
-MAIL_PORT=587
-MAIL_USERNAME=yourAdress@gmail.com
-MAIL_PASSWORD=yourPassword
-MAIL_ENCRYPTION=tls
-MAIL_FROM_ADDRESS=yourAdress@gmail.com
-MAIL_FROM_NAME=Rese
-
-AWS_ACCESS_KEY_ID=yourId
-AWS_SECRET_ACCESS_KEY=yourKey
-AWS_DEFAULT_REGION=ap-northeast-1
-AWS_BUCKET=rese-genres
+cp .env.example .env
 ```
 
 ```

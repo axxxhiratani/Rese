@@ -6,7 +6,8 @@
 .container__form{
     display: inline-block;
     width: 100%;
-    background: #4169e1;
+    background: #fffacd;
+    ;
     border-radius: 5px;
     padding-top: 20px;
     margin: 0 auto;
@@ -26,30 +27,30 @@
 }
 .container__form__header--back:hover{
     background: #fff;
-    color: #0000ff;
+    color: #000;
 }
 .container__form__header--name {
     display: inline-block;
-    color: #fff;
+    color: #000;
     font-size: 20px;
     font-weight: bold;
     margin: 20px 15px;
 }
 .container__form__header--delete{
     display: inline-block;
-    color: #fff;
-    background: #4169e1;
+    color: #000;
+    background: #ffff00;
     padding: 5px 10px;
     font-size: 12px;
     font-weight: bold;
     margin: 15px;
-    border: #fff 1px solid;
+    border: #000 1px solid;
     border-radius: 5px;
     cursor: pointer;
 }
 .container__form__header--delete:hover{
     background: #fff;
-    color: #0000ff;
+    color: #000;
 }
 
 .container__form--select{
@@ -81,8 +82,8 @@
 
 .container__form--button{
     width: 100%;
-    color: #fff;
-    background: #0000ff;
+    color: #000;
+    background: #ffff00;
     margin: 0 auto;
     padding: 10px 0;
     border-bottom-left-radius: 5px;

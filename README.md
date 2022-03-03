@@ -18,6 +18,7 @@
 -   言語/ライブラリ/フレームワーク
     -   PHP 7.4.3
     -   Laravel 8.75
+    -   HTML/CSS
     -   JavaScript
     -   Vue 2.0
     -   JQuery 3.3.1
@@ -25,7 +26,7 @@
 -   インフラ
     -   Docker 20.10.10
     -   docker-compose 1.29.2
-    -   AWS(EC2,RDS,S3,VPC)
+    -   AWS(EC2,RDS,S3,VPC,Route53)
     -   Apache 2.4.52
     -   MySQL 15.1
     -   Git 2.32.0
@@ -44,7 +45,7 @@
     -   QR コード表示
     -   登録メールアドレスに予約のリマインドを送信
 -   オーナー
-    -   店舗情報追加・変更・削除
+    -   店舗情報の追加・変更・削除
     -   予約情報確認
 -   管理者
     -   オーナー作成

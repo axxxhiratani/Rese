@@ -20,7 +20,6 @@ class Shop extends Model
         "name",
         "area",
         "overview",
-        "image"
     ];
 
     public function genre()

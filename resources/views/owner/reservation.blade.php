@@ -25,9 +25,9 @@
                     時刻
                 </p>
             </div>
-            <div class="container__list__tr" v-for="reservation in reservations">
+            <div class="container__list__tr" v-for="(reservation,index) in reservations">
                 <p class="container__list__tr--td">
-                    @{{reservation.id}}
+                    @{{index + 1}}
                 </p>
                 <p class="container__list__tr--td">
                     @{{reservation.shop.name}}

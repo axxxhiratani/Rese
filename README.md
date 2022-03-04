@@ -15,7 +15,7 @@
 
 ## 3.インフラ構成図
 
-![infra](https://user-images.githubusercontent.com/91531795/156712515-3d38b2ab-2c4d-4c2f-9dea-f49528a74943.png)
+![infra](https://user-images.githubusercontent.com/91531795/156713046-1c6b51d3-8ee6-42d0-80be-24179abc2423.png)
 
 ## 4.使用技術
 

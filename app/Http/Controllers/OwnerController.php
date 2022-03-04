@@ -57,6 +57,7 @@ class OwnerController extends Controller
             "genres" => $genres
         ]);
     }
+
     public function storeShop(ShopRequest $request)
     {
         Shop::create([
@@ -90,7 +91,6 @@ class OwnerController extends Controller
             "overview" => $request->overview,
         ]);
         return redirect("/owner/index");
-
     }
 
     public function deleteShop(Request $request)

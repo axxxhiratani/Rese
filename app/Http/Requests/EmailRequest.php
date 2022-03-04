@@ -24,7 +24,6 @@ class EmailRequest extends FormRequest
     public function rules()
     {
         return [
-            //
             'subject' => ['required','max:191'],
             'text' => ['required','max:191']
         ];

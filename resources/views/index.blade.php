@@ -87,7 +87,6 @@
                 this.getShopSearch();
             }
         },
-
         methods:{
             getShopAll:async function(){
                 let url = "api/v1/shop";
@@ -105,7 +104,6 @@
                 // always executed(axiosの処理結果によらずいつも実行させたい処理を記述)
                 });
             },
-
             getShopSearch:async function(){
                 let url = "api/v1/shop/search";
                 await axios.get(url,{
@@ -129,7 +127,6 @@
                 });
                 this.getFavorite();
             },
-
             getGenreAll:async function(){
                 let url = "api/v1/genre";
                 await axios.get(url)
@@ -151,7 +148,6 @@
                 // always executed(axiosの処理結果によらずいつも実行させたい処理を記述)
                 });
             },
-
             getAreaAll:async function(){
                 let url = "api/v1/area";
                 await axios.get(url)
@@ -173,7 +169,6 @@
                 // always executed(axiosの処理結果によらずいつも実行させたい処理を記述)
                 });
             },
-
             getFavorite:async function () {
                 let url = `api/v1/favorite/${this.user_id}`;
                 await axios.get(url)
@@ -189,7 +184,6 @@
                 // always executed(axiosの処理結果によらずいつも実行させたい処理を記述)
                 });
             },
-
             decorationFavorite:function(shop_id,user_id,index){
                 let style = "fas fa-heart";
                 if(this.checkFavorite(shop_id,user_id,index)){
@@ -197,7 +191,6 @@
                 }
                 return style;
             },
-
             checkFavorite:function(shop_id,user_id,index){
                 let flg = false;
                 this.favorites.forEach(value =>{
@@ -207,7 +200,6 @@
                 });
                 return flg;
             },
-
             clickFavorite:function(shop_id,user_id,index){
                 if(!this.checkFavorite(shop_id,user_id,index)){
                     if(!window.confirm("お気に入り登録しますか？")){
@@ -220,9 +212,7 @@
                     }
                     this.deleteFavorite(shop_id,user_id,index);
                 }
-
             },
-
             addFavorite:async function(shop_id,user_id,index){
                 let url = "api/v1/favorite";
                 await axios.post(url,{
@@ -263,9 +253,7 @@
                 alert("お気に入りを解除しました。");
                 this.toggleHert(index);
             },
-
             movePage:async function(url){
-
                 if(!url){
                     return;
                 }
@@ -290,11 +278,9 @@
                 // always executed(axiosの処理結果によらずいつも実行させたい処理を記述)
                 });
             },
-
             toggleHert:function(index){
                 $(".container__list__shop--buttom--favorite").eq(index).find("i").toggleClass("favorited");
             },
-
             activePage:function(data){
                 let style = "";
                 if(data){

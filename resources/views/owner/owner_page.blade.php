@@ -16,7 +16,6 @@
             <div class="container__list__shop" v-for="(shop,index) in shops">
                 <img class="container__list__shop--img" v-bind:src="shop.genre.image" alt="">
                 <p class="container__list__shop--name">@{{shop.name}}</p>
-
                 <div class="container__list__shop--info">
                     <p>
                         #@{{shop.area_id.name}}

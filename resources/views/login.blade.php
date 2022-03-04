@@ -18,7 +18,6 @@
                         <p class="container--login__form__input--error">{{$message}}</p>
                     @enderror
                 </div>
-
                 <div class="container--login__form__input">
                     <label for="password" class="container--login__form__input--icon"><i class="fas fa-lock"></i></label>
                     <input type="password" name="password" id="password" class="container--login__form__input--text" placeholder="Password" value="{{old('password')}}">
@@ -26,9 +25,7 @@
                         <p class="container--login__form__input--error">{{$message}}</p>
                     @enderror
                 </div>
-
                 <button type="submit" class="container--login__form--button">ログイン</button>
-
             </form>
         </div>
     </div>

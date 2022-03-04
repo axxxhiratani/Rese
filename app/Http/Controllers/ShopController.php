@@ -17,12 +17,10 @@ class ShopController extends Controller
     public function showAll()
     {
         $shops = Shop::paginate(12);
-
         foreach($shops as $index => $shop){
             $shops[$index]["genre_id"] = $shop->genre;
             $shops[$index]["area_id"] = $shop->area;
         }
-
         return response()->json([
             "shops" => $shops
         ]);
@@ -37,6 +35,11 @@ class ShopController extends Controller
         return view("user.reservation",$data);
     }
 
+    /**
+     * reqeustに応じてshopsへSQLを発行する。
+     * 配列$sqlに条件文を挿入している。
+     *
+     */
     public function search(Request $request)
     {
         $sql = array();
@@ -58,15 +61,11 @@ class ShopController extends Controller
             ];
             array_push($sql,$data);
         }
-
         $shops = Shop::where($sql)->paginate(12);
         foreach($shops as $index => $shop){
             $shops[$index]["genre_id"] = $shop->genre;
             $shops[$index]["area_id"] = $shop->area;
         }
-
-
-
         return response()->json([
             "shops" => $shops
         ],200);
@@ -75,12 +74,10 @@ class ShopController extends Controller
     public function showReservation($id)
     {
         $reservations = Shop::where("id",$id)->with("reservations")->get();
-
         foreach($reservations[0]->reservations as $index => $reservation){
             $reservations[0]->reservations[$index]["user_id"] = $reservation->user;
             $reservations[0]->reservations[$index]["shop_id"] = $reservation->shop;
         }
-
         return response()->json([
             "reservations" => $reservations
         ],200);

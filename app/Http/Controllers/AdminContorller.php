@@ -3,8 +3,6 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use App\Models\Owner;
-use App\Models\User;
 use App\Http\Requests\EmailRequest;
 use App\Http\Requests\AreaRequest;
 use App\Http\Requests\GenreRequest;
@@ -12,6 +10,8 @@ use Illuminate\Support\Facades\Password;
 use Illuminate\Support\Facades\Mail;
 use Illuminate\Support\Facades\Storage;
 use App\Mail\RegisterMail;
+use App\Models\User;
+use App\Models\Owner;
 use App\Models\Genre;
 use App\Models\Area;
 
@@ -30,6 +30,11 @@ class AdminContorller extends Controller
         return view("admin.send_mail");
     }
 
+    /**
+     * requestで受け取った値を、user全員にメールで送信する。
+     * RequstterMailクラスに引数として、メールアドレス、本文、件名を渡す。
+     *
+     */
     public function storeEmail(EmailRequest $request)
     {
         $users = User::all();
@@ -37,7 +42,6 @@ class AdminContorller extends Controller
         $text = $request->text;
         foreach($users as $user){
             $user = $user["email"];
-
             Mail::send(new RegisterMail($user,$text,$subject));
         }
         return view("admin.completion",[
@@ -50,11 +54,15 @@ class AdminContorller extends Controller
         return view("admin.create_genre");
     }
 
+    /**
+     *requestで受け取ったイメージファイルを、AWSのS3ストレージへ保存する。
+     *保存した際のイメージファイルのパスを、データベースに保存する。
+     *
+     */
     public function storeGenre(GenreRequest $request)
     {
         $path = $request->file("image")->store("images","s3");
         Storage::disk("s3")->setVisibility($path,"public");
-
         $image = Genre::create([
             "name" => $request->name,
             "image" => Storage::disk("s3")->url($path)

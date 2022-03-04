@@ -24,7 +24,6 @@ class EvaluationRequest extends FormRequest
     public function rules()
     {
         return [
-            //
             'evaluation' => 'required',
             'comment' => ['required','max:191'],
         ];

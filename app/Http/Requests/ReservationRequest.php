@@ -24,7 +24,6 @@ class ReservationRequest extends FormRequest
     public function rules()
     {
         return [
-            //
             'user_id' => 'required',
             'shop_id' => 'required',
             'date' => 'required',

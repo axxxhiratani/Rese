@@ -129,7 +129,6 @@
                     }else{
                         vm.favorite_message = false;
                     }
-
                 })
                 .catch(function (error) {
                 // handle error(axiosの処理にエラーが発生した場合に処理させたいことを記述)

@@ -3,8 +3,8 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use App\Models\Reservation;
 use Illuminate\Support\Facades\Auth;
+use App\Models\Reservation;
 use App\Http\Requests\ReservationRequest;
 
 class ReservationController extends Controller
@@ -25,8 +25,6 @@ class ReservationController extends Controller
         $reservatoin = Reservation::where("id",$id)->first();
         $date =  date("Y-m-d", strtotime($reservatoin->visited_on));
         $time = date("h:i:s", strtotime($reservatoin->visited_on));
-
-
         return view("user.edit",[
             "reservation" => $reservatoin,
             "date" => $date,

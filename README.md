@@ -13,7 +13,11 @@
 
 ![Chunk Database - ページ 1 (4)](https://user-images.githubusercontent.com/91531795/155963984-2aaa57e4-0beb-43aa-8a33-f5aab7ab6488.png)
 
-## 3.使用技術
+## 3.インフラ構成図
+
+![infra](https://user-images.githubusercontent.com/91531795/156712515-3d38b2ab-2c4d-4c2f-9dea-f49528a74943.png)
+
+## 4.使用技術
 
 -   言語/ライブラリ/フレームワーク
     -   PHP 7.4.3
@@ -32,7 +36,7 @@
     -   Git 2.32.0
     -   Composer 2.2.7
 
-## 4.アプリの機能一覧
+## 5.アプリの機能一覧
 
 -   ユーザー
     -   会員登録・ログイン・ログアウト
@@ -53,7 +57,7 @@
     -   エリアの追加
     -   ユーザー全員へメール送信
 
-## 5.環境構築
+## 6.環境構築
 
 ①.env ファイルの設定(※1)
 

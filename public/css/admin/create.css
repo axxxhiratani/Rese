@@ -8,7 +8,7 @@
 .container__form{
     display: inline-block;
     width: 50%;
-    background: #ff6347;
+    background: #ff7f50;
     border-radius: 5px;
     padding-top: 20px;
 }
@@ -51,7 +51,7 @@
 .container__form--button{
     width: 100%;
     color: #fff;
-    background: #ff0000;
+    background: #ff4500;
     margin: 0 auto;
     padding: 10px 0;
     border-bottom-left-radius: 5px;
@@ -68,6 +68,7 @@
     color: red;
     font-size: 10px;
     margin: 5px 10px;
+    font-weight: bold;
 }
 
 .container__evaluation{

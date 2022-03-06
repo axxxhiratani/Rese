@@ -23,7 +23,7 @@
             @foreach ($admins as $admin)
                 <div class="container__list__tr">
                     <p class="container__list__tr--td">
-                        {{$admin->id}}
+                        {{$loop->index + 1}}
                     </p>
                     <p class="container__list__tr--td">
                         {{$admin->name}}
